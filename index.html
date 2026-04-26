@@ -3,28 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>QFM CEO Dashboard · Queen Fashion Malaysia</title>
+<title>QFM CEO Dashboard &middot; Queen Fashion Malaysia</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
-:root{--bg:#0b0e14;--card:#111827;--border:#1f2937;--text:#f3f4f6;--muted:#9ca3af;--green:#10b981;--red:#ef4444;--orange:#f59e0b;--blue:#3b82f6;--yellow:#eab308;--cyan:#06b6d4}
+:root{--bg:#0b0e14;--card:#111827;--border:#1f2937;--text:#f3f4f6;--muted:#9ca3af}
 *{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Inter,sans-serif;font-size:14px;min-height:100vh}
 .header{background:#0b0e14;border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:50}
 .header h1{font-size:17px;font-weight:700;display:flex;align-items:center;gap:10px}
-.header h1 .logo{font-size:22px}
-.header .subtitle{color:var(--muted);font-size:12px;font-weight:500}
-.header .badge{background:rgba(16,185,129,.12);color:var(--green);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}
+.header .logo{font-size:22px}.header .subtitle{color:var(--muted);font-size:12px;font-weight:500}
+.header .badge{background:rgba(16,185,129,.12);color:#10b981;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}
 .header .timestamp{margin-left:auto;color:var(--muted);font-size:12px}
 .container{max-width:1440px;margin:0 auto;padding:24px}
 .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:24px}
 .kpi-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;position:relative;overflow:hidden;transition:transform .15s,box-shadow .15s}
 .kpi-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.4)}
-.kpi-card:nth-child(1){border-left:3px solid var(--green)}
-.kpi-card:nth-child(2){border-left:3px solid var(--blue)}
-.kpi-card:nth-child(3){border-left:3px solid var(--orange)}
-.kpi-card:nth-child(4){border-left:3px solid var(--yellow)}
+.kpi-card:nth-child(1){border-left:3px solid #ef4444}.kpi-card:nth-child(2){border-left:3px solid #3b82f6}
+.kpi-card:nth-child(3){border-left:3px solid #f59e0b}.kpi-card:nth-child(4){border-left:3px solid #eab308}
 .kpi-label{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px;font-weight:600}
 .kpi-value{font-size:30px;font-weight:800;margin-bottom:4px;letter-spacing:-.5px}
-.kpi-change{font-size:12px;display:flex;align-items:center;gap:4px;font-weight:600;color:var(--green)}
+.kpi-change{font-size:12px;display:flex;align-items:center;gap:4px;font-weight:600}
 .icon{position:absolute;right:16px;top:16px;font-size:26px;opacity:.15}
 .chart-row{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:24px}
 @media(max-width:960px){.chart-row{grid-template-columns:1fr}}
@@ -34,70 +31,73 @@
 .section-header h2{font-size:16px;font-weight:700}
 .divider{flex:1;height:1px;background:var(--border)}
 .table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:13px}
-th{text-align:left;padding:10px 12px;background:rgba(59,130,246,.06);color:var(--blue);font-size:11px;text-transform:uppercase;letter-spacing:.5px;font-weight:700}
+th{text-align:left;padding:10px 12px;background:rgba(59,130,246,.06);color:#3b82f6;font-size:11px;text-transform:uppercase;letter-spacing:.5px;font-weight:700}
 td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
 tr:hover td{background:rgba(255,255,255,.015)}
 .product-name{display:flex;align-items:center;gap:10px;font-weight:600}
 .product-thumb{width:36px;height:36px;background:var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
 .tag{display:inline-block;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700}
-.tag-active{background:rgba(16,185,129,.12);color:var(--green)}
-.tag-inactive{background:rgba(239,68,68,.12);color:var(--red)}
-.tag-low{background:rgba(245,158,11,.12);color:var(--orange)}
+.tag-active{background:rgba(16,185,129,.12);color:#10b981}
+.tag-inactive{background:rgba(239,68,68,.12);color:#ef4444}
+.tag-low{background:rgba(245,158,11,.12);color:#f59e0b}
 .health-circle-wrap{display:flex;flex-direction:column;align-items:center;gap:6px}
 .health-circle{width:110px;height:110px;position:relative;display:flex;align-items:center;justify-content:center}
 .health-circle svg{position:absolute;top:0;left:0;transform:rotate(-90deg)}
 .health-val{font-size:28px;font-weight:800;z-index:1}
 .health-label{font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
 .sub-metric{display:flex;justify-content:space-between;align-items:center;font-size:12px;margin-bottom:10px}
-.sub-metric .label{color:var(--muted)} .sub-metric .value{font-weight:700}
+.sub-metric .label{color:var(--muted)}.sub-metric .value{font-weight:700}
 .meter{display:flex;justify-content:space-between;align-items:center;font-size:12px;margin-bottom:10px}
-.meter-label{color:var(--muted)} .meter-val{font-weight:700}
+.meter-label{color:var(--muted)}.meter-val{font-weight:700}
 .progress-track{background:var(--border);height:6px;border-radius:3px;overflow:hidden}
 .progress-fill{height:100%;border-radius:3px}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
 @media(max-width:768px){.grid-2,.chart-row{grid-template-columns:1fr}.kpi-grid{grid-template-columns:repeat(2,1fr)}}
+.alert-banner{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:8px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.alert-icon{font-size:20px}.alert-text{font-size:13px;font-weight:500;color:#fca5a5}
 </style>
 </head>
 <body>
 
 <div class="header">
   <h1><span class="logo">👑</span>Queen Fashion Malaysia</h1>
-  <span class="subtitle">CEO Turnaround Dashboard · MY Timezone</span>
+  <span class="subtitle">CEO Turnaround Dashboard &middot; MY Timezone</span>
   <span class="badge">LIVE</span>
-  <div class="timestamp">Updated: 2026-04-26 09:25</div>
+  <div class="timestamp" id="headerTime">Updated: 2026-04-26 11:33</div>
 </div>
+
 <div class="container">
+
+<!-- ALERT -->
+<div class="alert-banner">
+  <div class="alert-icon">🚨</div>
+  <div class="alert-text">Revenue down 64% vs prior 3 months. Only 107 of 854 products active. TikTok orders dropped to zero after Apr 21.</div>
+</div>
 
 <!-- KPI -->
 <div class="kpi-grid">
   <div class="kpi-card">
-    <div class="kpi-label">30-Day Revenue (TikTok)</div>
-    <div class="kpi-value" style="color:var(--green)">RM 9,467</div>
-    <div class="kpi-change">← Current period</div>
+    <div class="kpi-label">3-Month TikTok GMV</div>
+    <div class="kpi-value" style="color:#ef4444">RM 30,968</div>
+    <div class="kpi-change" style="color:#ef4444">▼ 64% vs prior 3M</div>
     <div class="icon">💰</div>
   </div>
   <div class="kpi-card">
-    <div class="kpi-label">28-Day Payout (Shopee)</div>
-    <div class="kpi-value" style="color:var(--blue)">RM 5,237</div>
-    <div class="kpi-change">151 orders</div>
+    <div class="kpi-label">28-Day Shopee Payout</div>
+    <div class="kpi-value" style="color:#3b82f6">RM 5,287</div>
+    <div class="kpi-change" style="color:#10b981">151 orders</div>
     <div class="icon">🏪</div>
   </div>
   <div class="kpi-card">
-    <div class="kpi-label">Business Health Score</div>
-    <div class="kpi-value" style="color:var(--orange)">94</div>
-    <div style="margin-top:6px">
-      <div class="meter"><span class="meter-label">Combined Revenue</span><span class="meter-val" style="color:var(--green)">RM 14,704</span></div>
-      <div class="progress-track"><div class="progress-fill" style="background:var(--green);width:73.5%"></div></div>
-    </div>
+    <div class="kpi-label">Business Health</div>
+    <div class="kpi-value" style="color:#f59e0b">21</div>
+    <div class="kpi-change" style="color:#f59e0b">CRITICAL &mdash; Needs Immediate Action</div>
     <div class="icon">📊</div>
   </div>
   <div class="kpi-card">
     <div class="kpi-label">Active / Total Listings</div>
-    <div class="kpi-value" style="color:var(--yellow)">107 / 854</div>
-    <div style="margin-top:6px">
-      <div class="meter"><span class="meter-label">Active Rate</span><span class="meter-val" style="color:var(--orange)">12.5%</span></div>
-      <div class="progress-track"><div class="progress-fill" style="background:var(--orange);width:12.5%"></div></div>
-    </div>
+    <div class="kpi-value" style="color:#eab308">107 / 854</div>
+    <div class="kpi-change" style="color:#ef4444">IN107 INACTIVE (87.5%)</div>
     <div class="icon">📦</div>
   </div>
 </div>
@@ -107,6 +107,7 @@ tr:hover td{background:rgba(255,255,255,.015)}
   <div class="chart-card">
     <h2>📈 Daily Revenue (Last 14 Days)</h2>
     <canvas id="revChart" height="140"></canvas>
+    <div style="color:var(--muted);font-size:11px;margin-top:8px">Note: TikTok data ends Apr 21 (last extraction). Shopee current through Apr 26.</div>
   </div>
   <div class="chart-card">
     <h2>🏥 Health Score</h2>
@@ -115,11 +116,19 @@ tr:hover td{background:rgba(255,255,255,.015)}
         <div class="health-circle">
           <svg width="110" height="110" viewBox="0 0 110 110">
             <circle cx="55" cy="55" r="48" fill="none" stroke="var(--border)" stroke-width="9"/>
-            <circle cx="55" cy="55" r="48" fill="none" stroke="#10b981" stroke-width="9" stroke-dasharray="301.59" stroke-dashoffset="19.6" stroke-linecap="round"/>
+            <circle cx="55" cy="55" r="48" fill="none" stroke="#ef4444" stroke-width="9" stroke-dasharray="301.59" stroke-dashoffset="238.3" stroke-linecap="round"/>
           </svg>
-          <div class="health-val" style="color:#10b981">94</div>
+          <div class="health-val" style="color:#ef4444">21</div>
         </div>
-        <div class="health-label" style="color:#10b981">EXCELLENT</div>
+        <div class="health-label" style="color:#ef4444">CRITICAL</div>
+      </div>
+      <div style="flex:1;max-width:220px">
+        <div class="sub-meter"><span class="meter-label">Revenue vs Peak</span><span class="meter-val" style="color:#ef4444">1/25</span></div>
+        <div class="progress-track"><div class="progress-fill" style="background:#ef4444;width:1_PCT%"></div></div>
+        <div class="sub-meter" style="margin-top:12px"><span class="meter-label">Inventory Health</span><span class="meter-val" style="color:#f59e0b">6/25</span></div>
+        <div class="progress-track"><div class="progress-fill" style="background:#f59e0b;width:6_PCT%"></div></div>
+        <div class="sub-meter" style="margin-top:12px"><span class="meter-label">Trend Score</span><span class="meter-val" style="color:#ef4444">-20/+10</span></div>
+        <div class="progress-track"><div class="progress-fill" style="background:#ef4444;width:-20_PCT%"></div></div>
       </div>
     </div>
   </div>
@@ -128,32 +137,33 @@ tr:hover td{background:rgba(255,255,255,.015)}
 <!-- Platform Charts -->
 <div class="section-header"><h2>📊 Platform Performance</h2><div class="divider"></div></div>
 <div class="grid-2">
-  <div class="chart-card"><h2>Revenue Split</h2><canvas id="revPie" height="160"></canvas></div>
+  <div class="chart-card"><h2>Revenue Split (Last 3M)</h2><canvas id="revPie" height="160"></canvas></div>
   <div class="chart-card"><h2>Orders</h2><canvas id="ordersChart" height="160"></canvas></div>
 </div>
 
 <!-- Top Products -->
-<div class="section-header"><h2>🔥 Top 15 Products (TikTok · Last 30 Days)</h2><div class="divider"></div></div>
+<div class="section-header"><h2>🔥 Top 15 Products (TikTok &middot; Feb&ndash;Apr 2026)</h2><div class="divider"></div></div>
 <div class="chart-card">
   <div class="table-wrap">
     <table>
       <thead><tr><th>#</th><th>Product</th><th style="text-align:right">Units</th><th style="text-align:right">Est.Rev</th><th>Status</th></tr></thead>
       <tbody>
-<tr><td>1</td><td class="product-name"><div class="product-thumb">👚</div>QFM Candies Top (2225#) Casual</td><td style="text-align:right">290</td><td style="text-align:right">RM 14,500</td><td><span class="tag tag-inactive">INACTIVE</span></td></tr>
-<tr><td>2</td><td class="product-name"><div class="product-thumb">👚</div>QFM Kemeja Labuh Wanita | Muslimah Long Blouse L</td><td style="text-align:right">140</td><td style="text-align:right">RM 7,000</td><td><span class="tag tag-low">CHECK</span></td></tr>
-<tr><td>3</td><td class="product-name"><div class="product-thumb">📦</div>QFM Ozlyn Palazzo (X103#) Cotton Casual</td><td style="text-align:right">115</td><td style="text-align:right">RM 5,750</td><td><span class="tag tag-low">CHECK</span></td></tr>
-<tr><td>4</td><td class="product-name"><div class="product-thumb">👚</div>QFM Damia Top (#1214) Casual Plain</td><td style="text-align:right">105</td><td style="text-align:right">RM 5,250</td><td><span class="tag tag-inactive">INACTIVE</span></td></tr>
-<tr><td>5</td><td class="product-name"><div class="product-thumb">👚</div>QFM Jojo Top (135#) Casual</td><td style="text-align:right">85</td><td style="text-align:right">RM 4,250</td><td><span class="tag tag-inactive">INACTIVE</span></td></tr>
-<tr><td>6</td><td class="product-name"><div class="product-thumb">👚</div>QFM Tana Top (1113#) Casual</td><td style="text-align:right">75</td><td style="text-align:right">RM 3,750</td><td><span class="tag tag-inactive">INACTIVE</span></td></tr>
-<tr><td>7</td><td class="product-name"><div class="product-thumb">👚</div>QFM HANIE TOP PLUS SIZE (T518#)</td><td style="text-align:right">65</td><td style="text-align:right">RM 3,250</td><td><span class="tag tag-inactive">INACTIVE</span></td></tr>
-<tr><td>8</td><td class="product-name"><div class="product-thumb">👚</div>QFM Layla Long Blouse (6077#) Casual</td><td style="text-align:right">65</td><td style="text-align:right">RM 3,250</td><td><span class="tag tag-inactive">INACTIVE</span></td></tr>
-<tr><td>9</td><td class="product-name"><div class="product-thumb">👖</div>QFM Kamelia Pants (132#) Casual Cotton</td><td style="text-align:right">50</td><td style="text-align:right">RM 2,500</td><td><span class="tag tag-inactive">INACTIVE</span></td></tr>
-<tr><td>10</td><td class="product-name"><div class="product-thumb">📦</div>QFM Leopard Skirt  (0647#) Pleated</td><td style="text-align:right">50</td><td style="text-align:right">RM 2,500</td><td><span class="tag tag-inactive">INACTIVE</span></td></tr>
-<tr><td>11</td><td class="product-name"><div class="product-thumb">📦</div>QFM Kaison Skirt (03#) Casual Floral</td><td style="text-align:right">45</td><td style="text-align:right">RM 2,250</td><td><span class="tag tag-low">CHECK</span></td></tr>
-<tr><td>12</td><td class="product-name"><div class="product-thumb">📦</div>QFM Kaison Skirt (12#) Casual Floral</td><td style="text-align:right">45</td><td style="text-align:right">RM 2,250</td><td><span class="tag tag-inactive">INACTIVE</span></td></tr>
-<tr><td>13</td><td class="product-name"><div class="product-thumb">👚</div>QFM Irene Top (6025#) Casual</td><td style="text-align:right">45</td><td style="text-align:right">RM 2,250</td><td><span class="tag tag-inactive">INACTIVE</span></td></tr>
-<tr><td>14</td><td class="product-name"><div class="product-thumb">📦</div>[READY STOCK] Wide Shawl Cotton Plain Como Crepe</td><td style="text-align:right">40</td><td style="text-align:right">RM 2,000</td><td><span class="tag tag-inactive">INACTIVE</span></td></tr>
-<tr><td>15</td><td class="product-name"><div class="product-thumb">👚</div>QFM Jaclyn Top (1199#) Casual</td><td style="text-align:right">40</td><td style="text-align:right">RM 2,000</td><td><span class="tag tag-inactive">INACTIVE</span></td></tr>
+<tr><td>1</td><td class="product-name"><div class="product-thumb">👚</div>QFM Elnaura Knitted Striped Top (A606)</td><td style="text-align:right">409</td><td style="text-align:right">RM 18,405</td><td><span class="tag tag-active">ACTIVE</span></td></tr>
+<tr><td>2</td><td class="product-name"><div class="product-thumb">🧥</div>QFM Azita Knitted Cardigan (1379-2)</td><td style="text-align:right">203</td><td style="text-align:right">RM 9,135</td><td><span class="tag tag-active">ACTIVE</span></td></tr>
+<tr><td>3</td><td class="product-name"><div class="product-thumb">👚</div>QFM Melody Batwing Knitwear Top (#3299)</td><td style="text-align:right">153</td><td style="text-align:right">RM 6,885</td><td><span class="tag tag-active">ACTIVE</span></td></tr>
+<tr><td>4</td><td class="product-name"><div class="product-thumb">👚</div>QFM Aprilia Kemeja Top (#1318)</td><td style="text-align:right">74</td><td style="text-align:right">RM 3,330</td><td><span class="tag tag-active">ACTIVE</span></td></tr>
+<tr><td>5</td><td class="product-name"><div class="product-thumb">📦</div>QFM Rosee Batwing Button Knitwear (#3289)</td><td style="text-align:right">59</td><td style="text-align:right">RM 2,655</td><td><span class="tag tag-active">ACTIVE</span></td></tr>
+<tr><td>6</td><td class="product-name"><div class="product-thumb">👚</div>QFM Adra Croptop Ribbon (#1446)</td><td style="text-align:right">55</td><td style="text-align:right">RM 2,475</td><td><span class="tag tag-active">ACTIVE</span></td></tr>
+<tr><td>7</td><td class="product-name"><div class="product-thumb">📦</div>QFM Ana Batwing Knitwear Viral (1532)</td><td style="text-align:right">35</td><td style="text-align:right">RM 1,575</td><td><span class="tag tag-active">ACTIVE</span></td></tr>
+<tr><td>8</td><td class="product-name"><div class="product-thumb">📦</div>QFM Faye Plain Tunic (#31025)</td><td style="text-align:right">14</td><td style="text-align:right">RM 630</td><td><span class="tag tag-active">ACTIVE</span></td></tr>
+<tr><td>9</td><td class="product-name"><div class="product-thumb">👚</div>QFM Reene Corduroy Jacket Croptop (9896)</td><td style="text-align:right">11</td><td style="text-align:right">RM 495</td><td><span class="tag tag-active">ACTIVE</span></td></tr>
+<tr><td>10</td><td class="product-name"><div class="product-thumb">👚</div>QFM Serra Top (1555) Zipped Neck</td><td style="text-align:right">10</td><td style="text-align:right">RM 450</td><td><span class="tag tag-active">ACTIVE</span></td></tr>
+<tr><td>11</td><td class="product-name"><div class="product-thumb">👗</div>QFM Eva Dolly Pleated Skirt (238)</td><td style="text-align:right">10</td><td style="text-align:right">RM 450</td><td><span class="tag tag-active">ACTIVE</span></td></tr>
+<tr><td>12</td><td class="product-name"><div class="product-thumb">📦</div>QFM Jasmin Cotton Stripes Knitwear (2903)</td><td style="text-align:right">8</td><td style="text-align:right">RM 360</td><td><span class="tag tag-active">ACTIVE</span></td></tr>
+<tr><td>13</td><td class="product-name"><div class="product-thumb">📦</div>QFM Nurizz Knitwear (1328-2)</td><td style="text-align:right">8</td><td style="text-align:right">RM 360</td><td><span class="tag tag-active">ACTIVE</span></td></tr>
+<tr><td>14</td><td class="product-name"><div class="product-thumb">👗</div>QFM Skirt HAZEL Pleated Chiffon (#260)</td><td style="text-align:right">7</td><td style="text-align:right">RM 315</td><td><span class="tag tag-active">ACTIVE</span></td></tr>
+<tr><td>15</td><td class="product-name"><div class="product-thumb">👗</div>QFM Marissa Flare Skirt Denim Cotton (99117-2)</td><td style="text-align:right">6</td><td style="text-align:right">RM 270</td><td><span class="tag tag-active">ACTIVE</span></td></tr>
+
       </tbody>
     </table>
   </div>
@@ -162,16 +172,16 @@ tr:hover td{background:rgba(255,255,255,.015)}
 <!-- Key Issues -->
 <div class="section-header"><h2>🚨 Key Issues</h2><div class="divider"></div></div>
 <div class="kpi-grid">
-  <div class="kpi-card" style="border-left:3px solid var(--red)">
-    <div class="kpi-label" style="color:var(--red)">CRITICAL</div>
-    <div style="font-size:20px;font-weight:800;margin:10px 0">747 of 854</div>
-    <div style="color:var(--muted);font-size:13px">products are INACTIVE — not selling</div>
-    <div class="progress-track" style="margin-top:10px"><div class="progress-fill" style="background:var(--red);width:87.5%"></div></div>
+  <div class="kpi-card" style="border-left:3px solid #ef4444">
+    <div class="kpi-label" style="color:#ef4444">CRITICAL</div>
+    <div style="font-size:20px;font-weight:800;margin:10px 0">IN107 products inactive</div>
+    <div style="color:var(--muted);font-size:13px">Only 107 of 854 listings are ACTIVATE. IN107 are blocked, delisted, or deactivated.</div>
+    <div class="progress-track" style="margin-top:10px"><div class="progress-fill" style="background:#ef4444;width:87.5%"></div></div>
   </div>
-  <div class="kpi-card" style="border-left:3px solid var(--orange)">
-    <div class="kpi-label" style="color:var(--orange)">HIGH</div>
-    <div style="font-size:20px;font-weight:800;margin:10px 0">RM 9,467/mo</div>
-    <div style="color:var(--muted);font-size:13px">TikTok revenue below target (RM 15k/mo)</div>
+  <div class="kpi-card" style="border-left:3px solid #f59e0b">
+    <div class="kpi-label" style="color:#f59e0b">HIGH</div>
+    <div style="font-size:20px;font-weight:800;margin:10px 0">RM 30,968/quarter</div>
+    <div style="color:var(--muted);font-size:13px">Revenue collapsed 64% from RM 87,139. Peak was RM 236,899.</div>
   </div>
 </div>
 
@@ -179,11 +189,11 @@ tr:hover td{background:rgba(255,255,255,.015)}
 <div class="section-header"><h2>🎯 90-Day Turnaround Plan</h2><div class="divider"></div></div>
 <div class="chart-card">
   <table>
-    <thead><tr><th>Phase</th><th>Week</th><th>Actions</th><th>Target Revenue</th></tr></thead>
+    <thead><tr><th>Phase</th><th>Week</th><th>Actions</th><th>Target</th></tr></thead>
     <tbody>
-      <tr><td><span class="tag tag-inactive">STOP THE BLEED</span></td><td>W1-W2</td><td>Restock top 10 bestsellers. Fix 50 blocked listings.</td><td>RM 15,000/mo</td></tr>
-      <tr><td><span class="tag tag-low">OPTIMIZE</span></td><td>W3-W6</td><td>Daily live. TikTok ads. Price tuning.</td><td>RM 20,000/mo</td></tr>
-      <tr><td><span class="tag tag-active">GROWTH</span></td><td>W7-W12</td><td>Summer collection. Affiliate program.</td><td>RM 30,000/mo</td></tr>
+      <tr><td><span class="tag tag-inactive">STOP THE BLEED</span></td><td>W1-W2</td><td>Restock top 10 (A606, #3299, #1379-2). Fix 50 blocked listings. Verify daily live stream running.</td><td>RM 15K/mo</td></tr>
+      <tr><td><span class="tag tag-low">OPTIMIZE</span></td><td>W3-W6</td><td>Daily 2hr live. TikTok ads RM 500/wk. Price tuning on inactive bestsellers.</td><td>RM 20K/mo</td></tr>
+      <tr><td><span class="tag tag-active">GROWTH</span></td><td>W7-W12</td><td>Summer collection. Affiliate program. Cross-sell bundles.</td><td>RM 30K/mo</td></tr>
     </tbody>
   </table>
 </div>
@@ -194,11 +204,12 @@ tr:hover td{background:rgba(255,255,255,.015)}
   <table>
     <thead><tr><th>#</th><th>Task</th><th>Done</th></tr></thead>
     <tbody>
-      <tr><td>1</td><td>Check top-seller stock. Restock if below 20 units.</td><td>☐</td></tr>
-      <tr><td>2</td><td>Post 1 product video to TikTok.</td><td>☐</td></tr>
-      <tr><td>3</td><td>Run live stream for 2+ hours.</td><td>☐</td></tr>
-      <tr><td>4</td><td>Reply customer messages within 5 minutes.</td><td>☐</td></tr>
-      <tr><td>5</td><td>Check Shopee orders, ship same day.</td><td>☐</td></tr>
+      <tr><td>1</td><td>Check stock for A606, #3299, #1379-2, #1318. If any below 20 units &rarr; restock immediately.</td><td>☐</td></tr>
+      <tr><td>2</td><td>Run TikTok live for minimum 2 hours. Peak times: Sunday 8&ndash;10 PM, Thursday 8&ndash;10 PM.</td><td>☐</td></tr>
+      <tr><td>3</td><td>Post 1 product video on TikTok. Focus on A606 or #3299 (proven sellers).</td><td>☐</td></tr>
+      <tr><td>4</td><td>Reply customer messages within 5 minutes. Check Shopee and TikTok inbox.</td><td>☐</td></tr>
+      <tr><td>5</td><td>Ship Shopee orders same day. Update tracking numbers before 4 PM.</td><td>☐</td></tr>
+      <tr><td>6</td><td>Check which products flipped to INACTIVE today. Reactivate if accidental.</td><td>☐</td></tr>
     </tbody>
   </table>
 </div>
@@ -206,24 +217,20 @@ tr:hover td{background:rgba(255,255,255,.015)}
 </div>
 
 <script>
-function tick(){
-  document.getElementById('headerTime').textContent='Updated: '+new Date().toLocaleString('en-GB',{timeZone:'Asia/Kuala_Lumpur',hour12:false});
-}
+function tick(){document.getElementById('headerTime').textContent='Updated: '+new Date().toLocaleString('en-GB',{timeZone:'Asia/Kuala_Lumpur',hour12:false});}
 tick(); setInterval(tick,60000);
 
 const ctx1=document.getElementById('revChart').getContext('2d');
-new Chart(ctx1,{type:'line',data:{labels:["04/12", "04/13", "04/14", "04/15", "04/16", "04/17", "04/18", "04/19", "04/20", "04/21", "04/22", "04/23", "04/24", "04/25"],datasets:[
-  {label:'TikTok',data:[345.89, 296.99, 401.6, 198.4, 96.7, 703.9, 322.9, 584.3, 251.1, 392.6, 244.19, 176.4, 874.01, 105.61],borderColor:'#10b981',backgroundColor:'rgba(16,185,129,0.08)',fill:true,tension:0.4,pointRadius:2,pointHoverRadius:5},
-  {label:'Shopee',data:[53.349999999999994, 97.84, 285.88, 216.89999999999998, 259.03, 521.32, 288.3500000000001, 363.37, 305.90999999999997, 106.78, 220.35, 169.74, 299.63, 427.90999999999997],borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,0.08)',fill:true,tension:0.4,pointRadius:2,pointHoverRadius:5}
-]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,labels:{usePointStyle:true,pointStyle:'circle',color:'#9ca3af',padding:16}},tooltip:
-
-{mode:'index',intersect:false,backgroundColor:'rgba(0,0,0,.85)',padding:12,cornerRadius:8}},scales:{x:{grid:{color:'#1f2937'},ticks:{color:'#9ca3af',font:{size:11}}},y:{grid:{color:'#1f2937'},ticks:{color:'#9ca3af',font:{size:11},callback:v=>'RM'+Math.round(v)}}},interaction:{mode:'index',intersect:false}}});
+new Chart(ctx1,{type:'line',data:{labels:['04/13','04/14','04/15','04/16','04/17','04/18','04/19','04/20','04/21','04/22','04/23','04/24','04/25','04/26'],datasets:[
+  {label:'TikTok',data:[369.51,554.93,593.81,328.02,277.41,354.65,838.85,526.83,140.02,0,0,0,0,0],borderColor:'#10b981',backgroundColor:'rgba(16,185,129,0.08)',fill:true,tension:0.4,pointRadius:2,pointHoverRadius:5},
+  {label:'Shopee',data:[97.84,285.88,216.9,259.03,521.32,288.35,363.37,305.91,106.78,220.35,169.74,299.63,427.91,88.45],borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,0.08)',fill:true,tension:0.4,pointRadius:2,pointHoverRadius:5}
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,labels:{usePointStyle:true,pointStyle:'circle',color:'#9ca3af',padding:16}},tooltip:{mode:'index',intersect:false,backgroundColor:'rgba(0,0,0,.85)',padding:12,cornerRadius:8}},scales:{x:{grid:{color:'#1f2937'},ticks:{color:'#9ca3af',font:{size:11}}},y:{grid:{color:'#1f2937'},ticks:{color:'#9ca3af',font:{size:11},callback:v=>'RM'+Math.round(v)}}}},interaction:{mode:'index',intersect:false}}});
 
 const ctx2=document.getElementById('revPie').getContext('2d');
-new Chart(ctx2,{type:'doughnut',data:{labels:['TikTok','Shopee'],datasets:[{data:[9467.42,5236.98],backgroundColor:['#10b981','#3b82f6'],borderColor:'#111827',borderWidth:4,hoverOffset:8}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#f3f4f6',padding:16}},tooltip:{backgroundColor:'rgba(0,0,0,.85)',padding:12}}}});
+new Chart(ctx2,{type:'doughnut',data:{labels:['TikTok','Shopee'],datasets:[{data:[30,968,5,287],backgroundColor:['#10b981','#3b82f6'],borderColor:'#111827',borderWidth:4,hoverOffset:8}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#f3f4f6',padding:16}},tooltip:{backgroundColor:'rgba(0,0,0,.85)',padding:12}}}});
 
 const ctx3=document.getElementById('ordersChart').getContext('2d');
-new Chart(ctx3,{type:'bar',data:{labels:['TikTok','Shopee'],datasets:[{label:'Orders',data:[1000,151],backgroundColor:['#10b981','#3b82f6'],borderRadius:6,barThickness:40}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'rgba(0,0,0,.85)',padding:12}},scales:{x:{grid:{display:false},ticks:{color:'#f3f4f6'}},y:{grid:{color:'#1f2937'},ticks:{color:'#9ca3af'}}}}});
+new Chart(ctx3,{type:'bar',data:{labels:['TikTok','Shopee'],datasets:[{label:'Orders',data:[954,151],backgroundColor:['#10b981','#3b82f6'],borderRadius:6,barThickness:40}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'rgba(0,0,0,.85)',padding:12}},scales:{x:{grid:{display:false},ticks:{color:'#f3f4f6'}},y:{grid:{color:'#1f2937'},ticks:{color:'#9ca3af'}}}}});
 </script>
 </body>
 </html>
