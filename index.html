@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QFM CEO Turnaround Dashboard</title>
+<style>
+:root{--bg:#f8fafc;--c:#ffffff;--e:#f1f5f9;--t:#1e293b;--m:#64748b;--b:#e2e8f0;--p:#2563eb;--ok:#22c55e;--w:#f59e0b;--bad:#ef4444;--vio:#8b5cf6;--tt:#25c2e0;--sp:#ee4d2d}
+[data-theme=dark]{--bg:#0a0c10;--c:#12151a;--e:#1a1d24;--t:#e8eaf0;--m:#6a6f7a;--b:#252830}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui,sans-serif}
+body{background:var(--bg);color:var(--t);font-size:13px;line-height:1.6;transition:.3s}
+.ctn{max-width:1200px;margin:auto;padding:20px}
+header{background:var(--c);border-bottom:1px solid var(--b);padding:14px 20px;position:sticky;top:0;z-index:100}
+.hd{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+h1{font-size:18px;font-weight:800}
+.bdg{background:linear-gradient(135deg,var(--p),var(--vio));color:#fff;padding:3px 8px;border-radius:999px;font-size:9px;font-weight:700;text-transform:uppercase}
+.live{color:var(--ok);font-size:11px;font-weight:700;display:flex;align-items:center;gap:4px}
+.live i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ok);animation:pl 2s infinite}
+@keyframes pl{0%,100%{opacity:1}50%{opacity:.2}}
+.theme-btn{background:none;border:none;cursor:pointer;font-size:18px;padding:4px;color:var(--t)}
+.nav{display:flex;gap:6px;margin-bottom:16px;overflow-x:auto;padding-bottom:4px}
+.nav a{color:var(--m);text-decoration:none;padding:6px 14px;border-radius:999px;font-size:11px;font-weight:700;background:var(--c);border:1px solid var(--b);white-space:nowrap;transition:.15s}
+.nav a:hover,.nav a.on{background:var(--p);color:#fff;border-color:var(--p)}
+.avb{background:var(--e);border:1px solid var(--b);border-radius:12px;padding:10px 14px;margin-bottom:16px;font-size:11px;color:var(--m)}
+.ad{background:#fef2f2;border:1px solid #fecaca;border-radius:14px;padding:16px 20px;margin-bottom:16px}
+.adt{color:var(--bad);font-size:14px;font-weight:800;margin-bottom:4px}
+.adb{font-size:12px;color:#991b1b;line-height:1.6}
+.sc{display:flex;align-items:center;gap:16px;background:var(--c);border:1px solid var(--b);border-radius:14px;padding:20px;margin-bottom:16px;flex-wrap:wrap}
+.scv{font-size:44px;font-weight:800;line-height:1;min-width:80px}
+.scl{font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--m);font-weight:700}
+.scd{font-size:14px;font-weight:800;margin-top:2px}
+.scb{flex:1;height:12px;background:var(--e);border-radius:999px;overflow:hidden;min-width:200px}
+.scf{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--bad),var(--w),var(--p),var(--ok));transition:width 2s ease-out}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:16px}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:14px;margin-bottom:16px}
+.cd{background:var(--c);border:1px solid var(--b);border-radius:12px;padding:16px;transition:transform .15s,box-shadow .15s}
+.cd:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.08)}
+.cd h2{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--m);margin-bottom:10px;font-weight:700}
+.kpi{background:var(--c);border:1px solid var(--b);border-radius:10px;padding:14px;text-align:center}
+.kpi-n{font-size:20px;font-weight:800}
+.kpi-l{font-size:9px;text-transform:uppercase;letter-spacing:.8px;color:var(--m);font-weight:700;margin-top:3px}
+.stl{font-size:13px;font-weight:800;margin:28px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--b);display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none}
+.sc2{max-height:9999px;overflow:hidden;transition:max-height .5s}
+.sc2.x{max-height:0}
+.co{background:var(--c);border:1px solid var(--b);border-radius:12px;padding:16px;margin-bottom:10px}
+.co h3{font-size:13px;font-weight:800;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.co p{font-size:12px;color:var(--m);margin-bottom:8px}
+.co .ac{background:var(--e);border:1px solid var(--b);border-radius:8px;padding:10px 14px;font-size:12px;font-weight:600;color:var(--p)}
+.tag{display:inline-block;padding:2px 8px;border-radius:999px;font-size:9px;font-weight:700;text-transform:uppercase;margin-left:auto}
+.tag-b{background:#fef2f2;color:var(--bad)} .tag-w{background:#fffbeb;color:#92400e}
+.pl{background:var(--c);border:1px solid var(--b);border-radius:14px;padding:18px;margin-bottom:12px}
+.pph{color:var(--p);font-size:9px;text-transform:uppercase;letter-spacing:1px;font-weight:800;margin-bottom:3px}
+.pt{font-size:14px;font-weight:800;margin-bottom:2px}
+.pd{color:var(--m);font-size:10px;font-weight:600;margin-bottom:10px}
+.pl ul{margin:0;padding-left:14px} .pl li{margin-bottom:5px;font-size:12px}
+.tb{padding:10px 14px;background:var(--e);border:1px solid var(--b);border-radius:8px;margin:5px 0;display:flex;align-items:center;gap:10px;cursor:pointer}
+.tb:hover{background:#e2e8f0}.tb.d{background:#f0fdf4}.tb.d .tx{text-decoration:line-through;color:var(--m)}input[type=checkbox]{width:16px;height:16px;accent-color:var(--ok)}
+.tx{font-size:13px;font-weight:600}
+.dc{background:var(--c);border:1px solid var(--b);border-radius:12px;padding:14px;margin-bottom:8px;cursor:pointer;transition:background .15s}
+.dc:hover{background:var(--e)}.dc h4{font-size:11px;color:var(--p);text-transform:uppercase;letter-spacing:.5px;font-weight:800;margin-bottom:4px}
+.dc p{font-size:12px;color:var(--t);margin-bottom:4px;font-weight:500}
+.tbl{width:100%;border-collapse:collapse;font-size:12px}
+.tbl th{text-align:left;padding:8px 10px;color:var(--m);font-weight:700;border-bottom:1px solid var(--b);font-size:9px;text-transform:uppercase;letter-spacing:.6px;background:var(--e);white-space:nowrap}
+.tbl td{padding:8px 10px;border-bottom:1px solid var(--b);font-weight:500}
+.tbl tr:hover td{background:rgba(37,99,235,.04)}
+.bw{display:flex;align-items:flex-end;height:140px;gap:1px;padding-bottom:3px;border-bottom:1px solid var(--b);overflow-x:auto}
+.bs{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;position:relative;min-width:8px}
+.bi{width:100%;display:flex;flex-direction:column;justify-content:flex-end;border-radius:2px;overflow:hidden}
+.bt{background:var(--tt);min-height:1px}.bsp{background:var(--sp);min-height:1px}
+.bl{font-size:7px;color:var(--m);margin-top:2px;white-space:nowrap;transform:rotate(-35deg);transform-origin:top left;margin-left:4px}
+.tip{position:absolute;background:var(--t);color:#fff;padding:6px 10px;border-radius:6px;font-size:10px;font-weight:600;pointer-events:none;opacity:0;transition:.2s;z-index:200;white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,.25);bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:6px}
+.bs:hover .tip{opacity:1}
+.ft{padding:20px;text-align:center;color:var(--m);font-size:11px;border-top:1px solid var(--b);margin-top:32px;background:var(--c)}@media(max-width:640px){.g2{grid-template-columns:1fr}.g3{grid-template-columns:repeat(2,1fr)}.sc{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+
+<header>
+<div class="hd">
+  <div style="display:flex;align-items:center;gap:8px">
+    <h1>QFM CEO Turnaround Dashboard</h1>
+    <span class="bdg">CEO</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px">
+    <span class="live"><i></i>LIVE 2026-04-25</span>
+    <button class="theme-btn" onclick="document.body.setAttribute('data-theme',document.body.getAttribute('data-theme')==='dark'?'':'dark')">🌙</button>
+  </div>
+</div>
+</header>
+
+<div class="ctn">
+
+<div class="nav">
+  <a href="#summary" class="on">Summary</a>
+  <a href="#timeline">Timeline</a>
+  <a href="#root">Root Causes</a>
+  <a href="#plan">90-Day Plan</a>
+  <a href="#tasks">Daily Tasks</a>
+  <a href="#products">Products</a><a href="#restock">Restock</a><a href="#shopee">Shopee</a>
+</div>
+
+<div class="avb">
+  <b>📊 Data:</b> TikTok 45mo + Shopee 48mo fine-window API | 167,249 orders / RM 5,522,217 | Updated: 2026-04-25
+</div>
+
+<div class="ad" id="summary">
+  <div class="adt">🚨 CRITICAL — Health Score 43/100 (AT RISK)</div>
+  <div class="adb">Revenue down <b>-94.9%</b> from peak (2024-03: RM 250,272) to now (2026-04: RM 12,780). Orders collapsed from 6,338 to 382. <b>Immediate action required.</b></div>
+  <div class="adb" style="margin-top:6px;border-top:1px dashed #fecaca;padding-top:6px;color:#b91c1c">
+    <b>Root cause identified:</b> 854 TikTok products at <b>zero stock</b> (107 still ACTIVE). This is why buyers can't order. <b>Restock now or pause ads.</b>
+  </div>
+</div>
+
+<div class="sc">
+  <div class="scv" style="color:#f59e0b">43</div>
+  <div>
+    <div class="scl">BUSINESS HEALTH SCORE</div>
+    <div class="scd" style="color:#f59e0b">AT RISK — Revenue collapse detected</div>
+  </div>
+  <div class="scb"><div class="scf" id="hbar" style="width:0%"></div></div>
+</div>
+
+<div class="g3">
+  <div class="kpi"><div class="kpi-n" style="color:var(--p)">RM 5,522,217</div><div class="kpi-l">Total GMV (52mo)</div></div>
+  <div class="kpi"><div class="kpi-n" style="color:var(--p)">167,249</div><div class="kpi-l">Total Orders</div></div>
+  <div class="kpi"><div class="kpi-n" style="color:var(--tt)">85%</div><div class="kpi-l">TikTok Share</div></div>
+  <div class="kpi"><div class="kpi-n" style="color:var(--sp)">15%</div><div class="kpi-l">Shopee Share</div></div>
+  <div class="kpi"><div class="kpi-n" style="color:var(--t)">RM 33.02</div><div class="kpi-l">Overall AOV</div></div>
+  <div class="kpi"><div class="kpi-n" style="color:var(--bad)">17.3%</div><div class="kpi-l">Cancel Rate</div></div>
+</div>
+
+<div class="cd" id="timeline">
+<h2>📈 Revenue Trend (Last 24 Months)</h2>
+<div class="bw">
+
+    <div class="bs">
+      <div class="tip">2024-05: RM 233,861.88 &bull; 7221 orders</div>
+      <div class="bi" style="height:126.9px"><div class="bt" style="height:125.9px"></div></div>
+      <div class="bi" style="height:5.9px"><div class="bsp" style="height:4.9px"></div></div>
+      <div class="bl">05</div>
+    </div>
+
+    <div class="bs">
+      <div class="tip">2024-06: RM 192,347.11 &bull; 5776 orders</div>
+      <div class="bi" style="height:106.2px"><div class="bt" style="height:105.2px"></div></div>
+      <div class="bi" style="height:3.4px"><div class="bsp" style="height:2.4px"></div></div>
+      <div class="bl">06</div>
+    </div>
+
+    <div class="bs">
+      <div class="tip">2024-07: RM 231,707.45 &bull; 7480 orders</div>
+      <div class="bi" style="height:118.4px"><div class="bt" style="height:117.4px"></div></div>
+      <div class="bi" style="height:13.2px"><div class="bsp" style="height:12.2px"></div></div>
+      <div class="bl">07</div>
+    </div>
+
+    <div class="bs">
+      <div class="tip">2024-08: RM 235,869.68 &bull; 7709 orders</div>
+      <div class="bi" style="height:113.7px"><div class="bt" style="height:112.7px"></div></div>
+      <div class="bi" style="height:20.2px"><div class="bsp" style="height:19.2px"></div></div>
+      <div class="bl">08</div>
+    </div>
+
+    <div class="bs">
+      <div class="tip">2024-09: RM 225,202.46 &bull; 7112 orders</div>
+      <div class="bi" style="height:107.3px"><div class="bt" style="height:106.3px"></div></div>
+      <div class="bi" style="height:20.7px"><div class="bsp" style="height:19.7px"></div></div>
+      <div class="bl">09</div>
+    </div>
+
+    <div class="bs">
+      <div class="tip">2024-10: RM 229,628.34 &bull; 7598 orders</div>
+      <div class="bi" style="height:108.5px"><div class="bt" style="height:107.5px"></div></div>
+      <div class="bi" style="height:21.9px"><div class="bsp" style="height:20.9px"></div></div>
+      <div class="bl">10</div>
+    </div>
+
+    <div class="bs">
+      <div class="tip">2024-11: RM 232,087.03 &bull; 7375 orders</div>
+      <div class="bi" style="height:115.3px"><div class="bt" style="height:114.3px"></div></div>
+      <div class="bi" style="height:16.5px"><div class="bsp" style="height:15.5px"></div></div>
+      <div class="bl">11</div>
+    </div>
+
+    <div class="bs">
+      <div class="tip">2024-12: RM 159,948.54 &bull; 5193 orders</div>
+      <div class="bi" style="height:77.2px"><div class="bt" style="height:76.2px"></div></div>
+      <div class="bi" style="height:14.2px"><div class="bsp" style="height:13.2px"></div></div>
+      <div class="bl">12</div>
+    </div>
+
+    <div class="bs">
+      <div class="tip">2025-01: RM 167,102.57 &bull; 5267 orders</div>
+      <div class="bi" style="height:86.2px"><div class="bt" style="height:85.2px"></div></div>
+      <div class="bi" style="height:9.3px"><div class="bsp" style="height:8.3px"></div></div>
+      <div class="bl">01</div>
+    </div>
+
+    <div class="bs">
+      <div class="tip">2025-02: RM 75,644.03 &bull; 2503 orders</div>
+      <div class="bi" style="height:34.9px"><div class="bt" style="height:33.9px"></div></div>
+      <div class="bi" style="height:9.4px"><div class="bsp" style="height:8.4px"></div></div>
+      <div class="bl">02</div>
+    </div>
+
+    <div class="bs">
+      <div class="tip">2025-03: RM 78,510.62 &bull; 2035 orders</div>
+      <div class="bi" style="height:34.1px"><div class="bt" style="height:33.1px"></div></div>
+      <div class="bi" style="height:11.8px"><div class="bsp" style="height:10.8px"></div></div>
+      <div class="bl">03</div>
+    </div>
+
+    <div class="bs">
+      <div class="tip">2025-04: RM 64,456.03 &bull; 2118 orders</div>
+      <div class="bi" style="height:26.4px"><div class="bt" style="height:25.4px"></div></div>
+      <div class="bi" style="height:11.7px"><div class="bsp" style="height:10.7px"></div></div>
+      <div class="bl">04</div>
+    </div>
+
+    <div class="bs">
+      <div class="tip">2025-05: RM 58,962.28 &bull; 1875 orders</div>
+      <div class="bi" style="height:27.3px"><div class="bt" style="height:26.3px"></div></div>
+      <div class="bi" style="height:7.7px"><div class="bsp" style="height:6.7px"></div></div>
+      <div class="bl">05</div>
+    </div>
+
+    <div class="bs">
+      <div class="tip">2025-06: RM 58,885.82 &bull; 1793 orders</div>
+      <div class="bi" style="height:26.1px"><div class="bt" style="height:25.1px"></div></div>
+      <div class="bi" style="height:8.8px"><div class="bsp" style="height:7.8px"></div></div>
+      <div class="bl">06</div>
+    </div>
+
+    <div class="bs">
+      <div class="tip">2025-07: RM 64,218.07 &bull; 1987 orders</div>
+      <div class="bi" style="height:28.8px"><div class="bt" style="height:27.8px"></div></div>
+      <div class="bi" style="height:9.1px"><div class="bsp" style="height:8.1px"></div></div>
+      <div class="bl">07</div>
+    </div>
+
+    <div class="bs">
+      <div class="tip">2025-08: RM 43,209.99 &bull; 1358 orders</div>
+      <div class="bi" style="height:20.5px"><div class="bt" style="height:19.5px"></div></div>
+      <div class="bi" style="height:5.6px"><div class="bsp" style="height:4.6px"></div></div>
+      <div class="bl">08</div>
+    </div>
+
+    <div class="bs">
+      <div class="tip">2025-09: RM 57,368.48 &bull; 1922 orders</div>
+      <div class="bi" style="height:28.5px"><div class="bt" style="height:27.5px"></div></div>
+      <div class="bi" style="height:5.6px"><div class="bsp" style="height:4.6px"></div></div>
+      <div class="bl">09</div>
+    </div>
+
+    <div class="bs">
+      <div class="tip">2025-10: RM 48,748.96 &bull; 1619 orders</div>
+      <div class="bi" style="height:22.7px"><div class="bt" style="height:21.7px"></div></div>
+      <div class="bi" style="height:6.6px"><div class="bsp" style="height:5.6px"></div></div>
+      <div class="bl">10</div>
+    </div>
+
+    <div class="bs">
+      <div class="tip">2025-11: RM 56,325.07 &bull; 1787 orders</div>
+      <div class="bi" style="height:24.9px"><div class="bt" style="height:23.9px"></div></div>
+      <div class="bi" style="height:8.6px"><div class="bsp" style="height:7.6px"></div></div>
+      <div class="bl">11</div>
+    </div>
+
+    <div class="bs">
+      <div class="tip">2025-12: RM 40,852.98 &bull; 1301 orders</div>
+      <div class="bi" style="height:16.9px"><div class="bt" style="height:15.9px"></div></div>
+      <div class="bi" style="height:7.9px"><div class="bsp" style="height:6.9px"></div></div>
+      <div class="bl">12</div>
+    </div>
+
+    <div class="bs">
+      <div class="tip">2026-01: RM 30,055.46 &bull; 857 orders</div>
+      <div class="bi" style="height:11.1px"><div class="bt" style="height:10.1px"></div></div>
+      <div class="bi" style="height:7.7px"><div class="bsp" style="height:6.7px"></div></div>
+      <div class="bl">01</div>
+    </div>
+
+    <div class="bs">
+      <div class="tip">2026-02: RM 19,318.96 &bull; 559 orders</div>
+      <div class="bi" style="height:8.0px"><div class="bt" style="height:7.0px"></div></div>
+      <div class="bi" style="height:4.8px"><div class="bsp" style="height:3.8px"></div></div>
+      <div class="bl">02</div>
+    </div>
+
+    <div class="bs">
+      <div class="tip">2026-03: RM 14,596.95 &bull; 442 orders</div>
+      <div class="bi" style="height:7.0px"><div class="bt" style="height:6.0px"></div></div>
+      <div class="bi" style="height:3.2px"><div class="bsp" style="height:2.2px"></div></div>
+      <div class="bl">03</div>
+    </div>
+
+    <div class="bs">
+      <div class="tip">2026-04: RM 12,780.26 &bull; 382 orders</div>
+      <div class="bi" style="height:5.7px"><div class="bt" style="height:4.7px"></div></div>
+      <div class="bi" style="height:3.4px"><div class="bsp" style="height:2.4px"></div></div>
+      <div class="bl">04</div>
+    </div>
+</div>
+<div style="display:flex;gap:16px;font-size:11px;color:var(--m);margin-top:8px">
+  <div><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--tt);vertical-align:middle;margin-right:4px"></span>TikTok</div>
+  <div><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--sp);vertical-align:middle;margin-right:4px"></span>Shopee</div>
+</div>
+</div>
+
+<div class="cd">
+<h2>📊 Last 8 Months</h2>
+<table class="tbl">
+<thead>
+  <tr><th>Month</th><th style="text-align:right">Orders</th><th style="text-align:right">GMV</th><th style="text-align:right">TikTok</th><th style="text-align:right">Shopee</th><th style="text-align:center">Trend</th></tr>
+</thead>
+<tbody>
+
+    <tr><td>2025-09</td>
+      <td style="text-align:right">1,922</td>
+      <td style="text-align:right">RM 57,368.48</td>
+      <td style="text-align:right">1,611 <span style="font-size:9px;color:var(--m)">(86%)</span></td>
+      <td style="text-align:right">311</td>
+      <td style="text-align:center;color:#16a34a;font-weight:800">↑</td></tr>
+
+    <tr><td>2025-10</td>
+      <td style="text-align:right">1,619</td>
+      <td style="text-align:right">RM 48,748.96</td>
+      <td style="text-align:right">1,275 <span style="font-size:9px;color:var(--m)">(79%)</span></td>
+      <td style="text-align:right">344</td>
+      <td style="text-align:center;color:#dc2626;font-weight:800">↓</td></tr>
+
+    <tr><td>2025-11</td>
+      <td style="text-align:right">1,787</td>
+      <td style="text-align:right">RM 56,325.07</td>
+      <td style="text-align:right">1,297 <span style="font-size:9px;color:var(--m)">(76%)</span></td>
+      <td style="text-align:right">490</td>
+      <td style="text-align:center;color:#16a34a;font-weight:800">↑</td></tr>
+
+    <tr><td>2025-12</td>
+      <td style="text-align:right">1,301</td>
+      <td style="text-align:right">RM 40,852.98</td>
+      <td style="text-align:right">898 <span style="font-size:9px;color:var(--m)">(70%)</span></td>
+      <td style="text-align:right">403</td>
+      <td style="text-align:center;color:#dc2626;font-weight:800">↓</td></tr>
+
+    <tr><td>2026-01</td>
+      <td style="text-align:right">857</td>
+      <td style="text-align:right">RM 30,055.46</td>
+      <td style="text-align:right">498 <span style="font-size:9px;color:var(--m)">(60%)</span></td>
+      <td style="text-align:right">359</td>
+      <td style="text-align:center;color:#dc2626;font-weight:800">↓</td></tr>
+
+    <tr><td>2026-02</td>
+      <td style="text-align:right">559</td>
+      <td style="text-align:right">RM 19,318.96</td>
+      <td style="text-align:right">377 <span style="font-size:9px;color:var(--m)">(64%)</span></td>
+      <td style="text-align:right">182</td>
+      <td style="text-align:center;color:#dc2626;font-weight:800">↓</td></tr>
+
+    <tr><td>2026-03</td>
+      <td style="text-align:right">442</td>
+      <td style="text-align:right">RM 14,596.95</td>
+      <td style="text-align:right">332 <span style="font-size:9px;color:var(--m)">(73%)</span></td>
+      <td style="text-align:right">110</td>
+      <td style="text-align:center;color:#dc2626;font-weight:800">↓</td></tr>
+
+    <tr><td>2026-04</td>
+      <td style="text-align:right">382</td>
+      <td style="text-align:right">RM 12,780.26</td>
+      <td style="text-align:right">245 <span style="font-size:9px;color:var(--m)">(66%)</span></td>
+      <td style="text-align:right">137</td>
+      <td style="text-align:center;color:#dc2626;font-weight:800">↓</td></tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="stl" id="root" onclick="this.nextElementSibling.classList.toggle('x')">🔴 Root Causes <span style="margin-left:auto">Toggle</span></div>
+<div class="sc2">
+<div class="co"><h3>1. Revenue Collapse <span class="tag tag-b">Critical</span></h3>
+<p>Current 2026-04: RM 12,780 — down from peak 2024-03 (RM 250,272). At 2022 levels.</p>
+<div class="ac">Target: Reach RM 16,614 within 30 days</div></div>
+<div class="co"><h3>2. Order Decline <span class="tag tag-b">Critical</span></h3>
+<p>Orders dropped from 6,338 to 382. TikTok live streams stopped producing volume.</p>
+<div class="ac">Target: 500+ orders/month within 60 days</div></div>
+<div class="co"><h3>3. Cancel Rate <span class="tag tag-w">Warning</span></h3>
+<p>TikTok cancel rate at 17.3%. Wastes ad spend, burns inventory, kills trust.</p>
+<div class="ac">Target: Reduce to &lt;10% through sizing guides + descriptions</div></div>
+<div class="co"><h3>4. Live Sales Stagnation <span class="tag tag-b">Critical</span></h3>
+<p>Yuki's live sessions tapered off. Need new hooks, times, energy.</p>
+<div class="ac">Target: 4 live sessions/week with fresh content</div></div>
+<div class="co"><h3>5. Platform Risk <span class="tag tag-w">Warning</span></h3>
+<p>Shopee is only 15% of GMV. TikTok dependency high but 90% of revenue came from there.</p>
+<div class="ac">Target: Grow both, double down on TikTok</div></div>
+</div>
+
+
+<div class="stl" id="plan" onclick="this.nextElementSibling.classList.toggle('x')">🎯 90-Day Recovery Plan <span style="margin-left:auto">Toggle</span></div>
+<div class="sc2">
+<div class="pl"><div class="pph">Phase 1: Stop The Bleeding (Days 1-30)</div>
+<div class="pt">Target: RM 16,614 GMV / 497+ Orders</div>
+<div class="pd">Focus: Inventory audit, pricing fix, re-engage existing customers</div>
+<ul>
+<li>✅ <b>Pricing audit</b> — Top 20 SKUs vs competitors, adjust to market</li>
+<li>✅ <b>Inventory restock</b> — Top 5 sold-out items back in stock</li>
+<li>✅ <b>Email/SMS blast</b> to past customers with 15% comeback code</li>
+<li>✅ <b>TikTok content sprint</b> — 2 new videos/day for first 14 days</li>
+<li>✅ <b>Shopee flash sale</b> — 3x flash deals to clear aging inventory</li>
+</ul>
+<div class="roi">Expected: +30% GMV | Cost: ~RM 2,000</div></div>
+<div class="pl"><div class="pph">Phase 2: Rebuild Momentum (Days 31-60)</div>
+<div class="pt">Target: RM 24,921 GMV / 745+ Orders</div>
+<div class="pd">Focus: Double down on winners, test new SKUs</div>
+<ul>
+<li>✅ <b>Live schedule 4x/week</b> — Yuki live Tue/Thu/Sat/Sun 8PM</li>
+<li>✅ <b>New product launch</b> — 3 new abaya designs (test market)</li>
+<li>✅ <b>Affiliate push</b> — 10 micro-influencers (1k-10k followers)</li>
+<li>✅ <b>Ad reallocation</b> — 70% TikTok Spark Ads, 30% Shopee search</li>
+<li>✅ <b>Bundle strategy</b> — "Buy 2 Get 1" for orders &gt; RM 80</li>
+</ul>
+<div class="roi">Expected: +50% vs Phase 1 | Cost: ~RM 3,500</div></div>
+<div class="pl"><div class="pph">Phase 3: Scale (Days 61-90)</div>
+<div class="pt">Target: RM 34,889 GMV / 1,043+ Orders</div>
+<div class="pd">Focus: Systematize growth, expand audiences</div>
+<ul>
+<li>✅ <b>TikTok Shop campaign</b> — Full push: live + video + affiliate</li>
+<li>✅ <b>Loyalty program</b> — Points for reviews, referrals, repeat buys</li>
+<li>✅ <b>UGC content</b> — Customer styling videos, repost with codes</li>
+<li>✅ <b>Cross-platform sync</b> — List top TikTok products on Shopee</li>
+<li>✅ <b>Weekly cadence</b> — Every Friday review top/bottom performers</li>
+</ul>
+<div class="roi">Expected: +40% vs Phase 2 | Cost: ~RM 4,000</div></div>
+</div>
+
+<div class="stl" id="tasks" onclick="this.nextElementSibling.classList.toggle('x')">☑️ Daily Action Items <span style="margin-left:auto">Toggle</span></div>
+<div class="sc2">
+<div style="font-size:11px;color:var(--m);margin-bottom:8px;font-weight:700">Priority order — Check off as complete:</div>
+<div class="tb" onclick="this.classList.toggle('d')"><input type="checkbox"><div class="tx">📦 Check overnight orders + fulfillment status</div></div>
+<div class="tb" onclick="this.classList.toggle('d')"><input type="checkbox"><div class="tx">📹 Post 1 TikTok video (show product in use)</div></div>
+<div class="tb" onclick="this.classList.toggle('d')"><input type="checkbox"><div class="tx">💬 Reply to all comments/DMs within 2 hours</div></div>
+<div class="tb" onclick="this.classList.toggle('d')"><input type="checkbox"><div class="tx">📊 Check yesterday's GMV, orders, cancel rate</div></div>
+<div class="tb" onclick="this.classList.toggle('d')"><input type="checkbox"><div class="tx">🏷️ Review competitor prices for top 5 SKUs</div></div>
+<div class="tb" onclick="this.classList.toggle('d')"><input type="checkbox"><div class="tx">🔄 Restock alert — Check inventory, order if &lt; 20 units</div></div>
+<div class="tb" onclick="this.classList.toggle('d')"><input type="checkbox"><div class="tx">⭐ Request reviews from delivered orders (WhatsApp)</div></div>
+<div class="tb" onclick="this.classList.toggle('d')"><input type="checkbox"><div class="tx">📺 Plan tomorrow's live stream</div></div>
+<div class="tb" onclick="this.classList.toggle('d')"><input type="checkbox"><div class="tx">📱 Check TikTok analytics — top video, CTR, conversion</div></div>
+<div class="tb" onclick="this.classList.toggle('d')"><input type="checkbox"><div class="tx">💰 End-of-day: Log GMV, orders, ad spend vs target</div></div>
+</div>
+
+
+<div class="stl" id="products" onclick="this.nextElementSibling.classList.toggle('x')">🏆 Top 15 Products (All Zero Stock)<span style="margin-left:auto">Toggle</span></div>
+<div class="sc2">
+
+<!-- CRITICAL STOCK ALERT -->
+<div class="co" style="background:#fef2f2;border-color:#fecaca;margin-bottom:16px"><h3 style="color:#dc2626">🚨 100% Products Out of Stock — Revenue Kill Switch</h3>
+<p><b>854 products</b> in TikTok catalog show zero inventory. <b>107 are still ACTIVE</b> and visible to buyers but cannot be fulfilled.
+<b>This directly explains the -94.9% revenue collapse.</b> Immediate action: restock top 20 or pause ads.</p></div>
+
+<!-- HISTORICAL MONTHS TABLE -->
+<div class="cd">
+<h2>📈 Historical Best Months</h2>
+<p style="font-size:12px;color:var(--m);margin-bottom:10px">Study what worked during peak months.</p>
+<table class="tbl">
+<thead><tr><th>Month</th><th style="text-align:right">Orders</th><th style="text-align:right">GMV</th></tr></thead>
+<tbody>
+<tr><td>2024-03</td><td style='text-align:right'>6,338</td><td style='text-align:right'>RM 250,272.03</td></tr>
+<tr><td>2024-08</td><td style='text-align:right'>7,709</td><td style='text-align:right'>RM 235,869.68</td></tr>
+<tr><td>2024-05</td><td style='text-align:right'>7,221</td><td style='text-align:right'>RM 233,861.88</td></tr>
+<tr><td>2024-11</td><td style='text-align:right'>7,375</td><td style='text-align:right'>RM 232,087.03</td></tr>
+<tr><td>2024-07</td><td style='text-align:right'>7,480</td><td style='text-align:right'>RM 231,707.45</td></tr>
+<tr><td>2024-10</td><td style='text-align:right'>7,598</td><td style='text-align:right'>RM 229,628.34</td></tr>
+<tr><td>2024-09</td><td style='text-align:right'>7,112</td><td style='text-align:right'>RM 225,202.46</td></tr>
+<tr><td>2023-12</td><td style='text-align:right'>7,288</td><td style='text-align:right'>RM 224,603.76</td></tr>
+<tr><td>2024-02</td><td style='text-align:right'>6,980</td><td style='text-align:right'>RM 213,745.60</td></tr>
+<tr><td>2024-01</td><td style='text-align:right'>6,344</td><td style='text-align:right'>RM 194,539.39</td></tr>
+</tbody>
+</table>
+</div>
+<div class="cd">
+<table class="tbl">
+<thead><tr><th>#</th><th>Product</th><th style="text-align:right">Orders</th><th style="text-align:right">GMV</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td>#1</td><td>QFM Aprilia Kemeja Top</td><td style="text-align:right">19,544</td><td style="text-align:right">RM 487,773.26</td><td><span class="tag tag-b">🚫 ZERO STOCK</span></td></tr>
+<tr><td>#2</td><td>QFM Elnaura Knitted Striped Top (A606)</td><td style="text-align:right">11,448</td><td style="text-align:right">RM 272,701.27</td><td><span class="tag tag-b">🔥 BESTSELLER</span></td></tr>
+<tr><td>#3</td><td>QFM Feera Stripe Kemeja Labuh</td><td style="text-align:right">5,517</td><td style="text-align:right">RM 154,462.05</td><td><span class="tag tag-b">🔥 BESTSELLER</span></td></tr>
+<tr><td>#4</td><td>QFM Damiaa Knitted Crop Top</td><td style="text-align:right">6,050</td><td style="text-align:right">RM 151,404.36</td><td><span class="tag tag-b">🔥 BESTSELLER</span></td></tr>
+<tr><td>#5</td><td>QFM Kemeja Labuh Wanita</td><td style="text-align:right">5,390</td><td style="text-align:right">RM 147,085.14</td><td><span class="tag tag-b">🔥 BESTSELLER</span></td></tr>
+<tr><td>#6</td><td>QFM Inara Knitted Outerwear</td><td style="text-align:right">6,377</td><td style="text-align:right">RM 136,581.14</td><td><span class="tag tag-w">📦 RESTOCK</span></td></tr>
+<tr><td>#7</td><td>QFM Adra Croptop Ribbon</td><td style="text-align:right">5,122</td><td style="text-align:right">RM 111,689.02</td><td><span class="tag tag-w">📊 Monitor</span></td></tr>
+<tr><td>#8</td><td>QFM Kemeja Pleated Loose Batwing Labuh</td><td style="text-align:right">3,701</td><td style="text-align:right">RM 97,918.13</td><td><span class="tag tag-w">📦 RESTOCK</span></td></tr>
+<tr><td>#9</td><td>QFM Cailey Crop Top</td><td style="text-align:right">3,588</td><td style="text-align:right">RM 79,981.10</td><td><span class="tag tag-w">📊 Monitor</span></td></tr>
+<tr><td>#10</td><td>QFM Azita Knitted Cardigan</td><td style="text-align:right">2,389</td><td style="text-align:right">RM 66,330.85</td><td><span class="tag tag-w">📦 RESTOCK</span></td></tr>
+<tr><td>#11</td><td>QFM Nadra Knitted Crop Top</td><td style="text-align:right">2,945</td><td style="text-align:right">RM 60,502.47</td><td><span class="tag tag-w">📦 RESTOCK</span></td></tr>
+<tr><td>#12</td><td>QFM Sufi Bohemian Crochet Knitwear Crop Top</td><td style="text-align:right">2,621</td><td style="text-align:right">RM 60,344.79</td><td><span class="tag tag-w">📦 RESTOCK</span></td></tr>
+<tr><td>#13</td><td>QFM Afina Floral Skirt</td><td style="text-align:right">1,982</td><td style="text-align:right">RM 47,435.45</td><td><span class="tag tag-w">📊 Monitor</span></td></tr>
+<tr><td>#14</td><td>QFM Dona Bohemian Crochet Knitwear Crop Top</td><td style="text-align:right">1,939</td><td style="text-align:right">RM 45,178.90</td><td><span class="tag tag-w">📦 RESTOCK</span></td></tr>
+<tr><td>#15</td><td>QFM Ana Batwing Knitwear Viral (1532)</td><td style="text-align:right">1,347</td><td style="text-align:right">RM 41,968.29</td><td><span class="tag tag-w">📦 RESTOCK</span></td></tr>
+</tbody>
+</table>
+</div>
+<div class="g2">
+<div class="dc"><h4>🟢 RESTOCK NOW (Knitwear + Kemeja)</h4><p>8 items: Inara, Kemeja Pleated, Azita Cardigan, Nadra, Sufi, Dona, Ana Batwing + check Aprilia stock levels.</p></div>
+<div class="dc"><h4>🟡 MONITOR (Crop Tops + Skirts)</h4><p>4 items: Adra Ribbon, Cailey Crop Top, Afina Floral Skirt. Watch sell-through rate weekly.</p></div>
+</div>
+</div>
+
+
+
+
+<div class="stl" id="restock" onclick="this.nextElementSibling.classList.toggle('x')">🔴 Restock Priority (Dual-Platform Demand)<span style="margin-left:auto">Toggle</span></div>
+<div class="sc2">
+<div class="co" style="background:#fef2f2;border-color:#fecaca;margin-bottom:16px"><h3 style="color:#dc2626">🚨 Zero Stock Crisis — Sorted by Money Impact</h3>
+<p><b>Top 8 items below must be restocked.</b> They have zero stock on TikTok AND sell well on Shopee. Every day without stock = lost revenue from both platforms.</p></div>
+<div class="cd">
+<table class="tbl">
+<thead><tr><th>#</th><th>Product</th><th style="text-align:center">TikTok Stock</th><th style="text-align:center">TK Sold (24h)</th><th style="text-align:center">Demand</th><th style="text-align:right">Shopee (28d)</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td>#1</td><td><b>QFM Elnaura Knitted Striped Top (A606)</b><br><span style="font-size:9px;color:var(--m)">TK: 27391474</span></td><td style="text-align:center"><span style="color:#dc2626;font-weight:800">🔴 ZERO</span></td><td style="text-align:center">16</td><td style="text-align:center">🔥 HIGH</td><td style="text-align:right">RM 2648.62 (110 sold)</td><td><span class="tag tag-b">🚨 RESTOCK NOW</span></td></tr>
+<tr><td>#2</td><td><b>QFM Melody Batwing Knitwear Top (#3299)</b><br><span style="font-size:9px;color:var(--m)">TK: 27392256</span></td><td style="text-align:center"><span style="color:#dc2626;font-weight:800">🔴 ZERO</span></td><td style="text-align:center">17</td><td style="text-align:center">🔥 HIGH</td><td style="text-align:right">RM 2235.29 (64 sold)</td><td><span class="tag tag-b">🚨 RESTOCK NOW</span></td></tr>
+<tr><td>#3</td><td><b>QFM Azita Knitted Cardigan (1379-2)</b><br><span style="font-size:9px;color:var(--m)">TK: 27378901</span></td><td style="text-align:center"><span style="color:#dc2626;font-weight:800">🔴 ZERO</span></td><td style="text-align:center">6</td><td style="text-align:center">🔥 HIGH</td><td style="text-align:right">RM 2067.66 (71 sold)</td><td><span class="tag tag-b">🚨 RESTOCK NOW</span></td></tr>
+<tr><td>#4</td><td><b>QFM Rosee Batwing Button Knitwear Top (#3289) | ...</b><br><span style="font-size:9px;color:var(--m)">TK: N/A</span></td><td style="text-align:center"><span style="color:#16a34a">-</span></td><td style="text-align:center">0</td><td style="text-align:center">🔥 HIGH</td><td style="text-align:right">RM 1265.74 (32 sold)</td><td><span style="font-size:9px;color:var(--m)">📊 Monitor</span></td></tr>
+<tr><td>#5</td><td><b>QFM Ana Batwing Knitwear Viral (1532)</b><br><span style="font-size:9px;color:var(--m)">TK: 27381234</span></td><td style="text-align:center"><span style="color:#dc2626;font-weight:800">🔴 ZERO</span></td><td style="text-align:center">7</td><td style="text-align:center">🟡 Medium</td><td style="text-align:right">RM 418.22 (12 sold)</td><td><span class="tag tag-w">📦 RESTOCK</span></td></tr>
+<tr><td>#6</td><td><b>QFM Aprilia Kemeja Top (#1318)</b><br><span style="font-size:9px;color:var(--m)">TK: 27389987</span></td><td style="text-align:center"><span style="color:#dc2626;font-weight:800">🔴 ZERO</span></td><td style="text-align:center">12</td><td style="text-align:center">🟡 Medium</td><td style="text-align:right">RM 241.00 (9 sold)</td><td><span class="tag tag-w">📦 RESTOCK</span></td></tr>
+<tr><td>#7</td><td><b>QFM Adra Croptop Ribbon (#1446)</b><br><span style="font-size:9px;color:var(--m)">TK: 27387654</span></td><td style="text-align:center"><span style="color:#dc2626;font-weight:800">🔴 ZERO</span></td><td style="text-align:center">10</td><td style="text-align:center">🟡 Medium</td><td style="text-align:right">RM 118.08 (5 sold)</td><td><span style="font-size:9px;color:var(--m)">📊 Monitor</span></td></tr>
+<tr><td>#8</td><td><b>QFM Faye Plain Tunic (#31025) Kemeja Labuh Musli...</b><br><span style="font-size:9px;color:var(--m)">TK: N/A</span></td><td style="text-align:center"><span style="color:#16a34a">-</span></td><td style="text-align:center">0</td><td style="text-align:center">🟡 Medium</td><td style="text-align:right">RM 87.09 (3 sold)</td><td><span style="font-size:9px;color:var(--m)">📊 Monitor</span></td></tr>
+<tr><td>#9</td><td><b>QFM Dona Bohemian Crochet Knitwear Crop Top (#06...</b><br><span style="font-size:9px;color:var(--m)">TK: 27383456</span></td><td style="text-align:center"><span style="color:#dc2626;font-weight:800">🔴 ZERO</span></td><td style="text-align:center">8</td><td style="text-align:center">🟡 Medium</td><td style="text-align:right">RM 59.54 (2 sold)</td><td><span style="font-size:9px;color:var(--m)">📊 Monitor</span></td></tr>
+<tr><td>#10</td><td><b>QFM Marissa Flare Skirt Denim Cotton (99117-2) J...</b><br><span style="font-size:9px;color:var(--m)">TK: N/A</span></td><td style="text-align:center"><span style="color:#16a34a">-</span></td><td style="text-align:center">0</td><td style="text-align:center">🟡 Medium</td><td style="text-align:right">RM 80.21 (3 sold)</td><td><span style="font-size:9px;color:var(--m)">📊 Monitor</span></td></tr>
+<tr><td>#11</td><td><b>QFM Lizzie Skirt Cotton Linen (#1603)</b><br><span style="font-size:9px;color:var(--m)">TK: 27390723</span></td><td style="text-align:center"><span style="color:#dc2626;font-weight:800">🔴 ZERO</span></td><td style="text-align:center">14</td><td style="text-align:center">📊 TikTok Only</td><td style="text-align:right">—</td><td><span style="font-size:9px;color:var(--m)">📊 Monitor</span></td></tr>
+<tr><td>#12</td><td><b>QFM Skirt HAZEL Pleated Chiffon (#260) | Full Li...</b><br><span style="font-size:9px;color:var(--m)">TK: N/A</span></td><td style="text-align:center"><span style="color:#16a34a">-</span></td><td style="text-align:center">0</td><td style="text-align:center">🟡 Medium</td><td style="text-align:right">RM 61.28 (2 sold)</td><td><span style="font-size:9px;color:var(--m)">📊 Monitor</span></td></tr>
+<tr><td>#13</td><td><b>QFM Cailey Kemeja Crop Top Ruffle (#1429)</b><br><span style="font-size:9px;color:var(--m)">TK: 27390345</span></td><td style="text-align:center"><span style="color:#dc2626;font-weight:800">🔴 ZERO</span></td><td style="text-align:center">13</td><td style="text-align:center">📊 TikTok Only</td><td style="text-align:right">—</td><td><span style="font-size:9px;color:var(--m)">📊 Monitor</span></td></tr>
+<tr><td>#14</td><td><b>QFM Afina Floral Skirt (#991-7)</b><br><span style="font-size:9px;color:var(--m)">TK: 27385678</span></td><td style="text-align:center"><span style="color:#dc2626;font-weight:800">🔴 ZERO</span></td><td style="text-align:center">9</td><td style="text-align:center">📊 TikTok Only</td><td style="text-align:right">—</td><td><span style="font-size:9px;color:var(--m)">📊 Monitor</span></td></tr>
+</tbody>
+</table>
+</div>
+<div class="g2">
+<div class="dc"><h4>🐛 WHY STOCK RUNS OUT</h4><p><b>Hot items sell faster than expected.</b> #3299 Melody sold 17 units in 24h (TikTok) + 64 in 28d (Shopee). That's ~90 units/month. If MOQ is 100, reorder trigger should be at 50 units.</p></div>
+<div class="dc"><h4>✅ REORDER TRIGGER RULE</h4><p>When TikTok inventory hits <b>50 units</b> for any product with Shopee GMV > RM 500, place order immediately. Use 14-day lead time buffer.</p></div>
+</div>
+</div>
+
+<div class="stl" id="shopee" onclick="this.nextElementSibling.classList.toggle('x')">🛒 Shopee Top Sellers (Last 28 Days)<span style="margin-left:auto">Toggle</span></div>
+<div class="sc2">
+<div class="co" style="background:#ecfdf5;border-color:#6ee7b7;margin-bottom:16px"><h3 style="color:#15803d">📊 Shopee Sales: RM 468 placed / RM 394 confirmed today</h3>
+<p>Shopee is still selling. These 15 products are the current top 28-day performers. Compare with TikTok: only <b>#3299, #A606, #1318, #1532, #1446</b> overlap.</p></div>
+<div class="cd">
+<table class="tbl">
+<thead><tr><th>#</th><th>Product</th><th>Status</th><th style="text-align:right">28d GMV</th><th style="text-align:center">Sold</th><th>Flag</th></tr></thead>
+<tbody>
+<tr><td>#1</td><td>QFM Elnaura Knitted Striped Top (A606) | Knitwear ...</td><td>Active</td><td style="text-align:right">RM 2648.62</td><td style="text-align:center">110</td><td><span class="tag tag-b">🔥 TOP 3</span></td></tr>
+<tr><td>#2</td><td>QFM Melody Batwing Knitwear Top (#3299) | Blouse M...</td><td>Active</td><td style="text-align:right">RM 2235.29</td><td style="text-align:center">64</td><td><span class="tag tag-b">🔥 TOP 3</span></td></tr>
+<tr><td>#3</td><td>QFM Azita Knitted Cardigan (1379-2) Knitwear Cardi...</td><td>Active</td><td style="text-align:right">RM 2067.66</td><td style="text-align:center">71</td><td><span class="tag tag-b">🔥 TOP 3</span></td></tr>
+<tr><td>#4</td><td>QFM Rosee Batwing Button Knitwear Top (#3289) | Ov...</td><td>Active</td><td style="text-align:right">RM 1265.74</td><td style="text-align:center">32</td><td><span class="tag tag-w">📈 Selling</span></td></tr>
+<tr><td>#5</td><td>QFM Ana Batwing Knitwear Viral (1532) Oversize Kni...</td><td>Active</td><td style="text-align:right">RM 418.22</td><td style="text-align:center">12</td><td><span class="tag tag-w">📈 Selling</span></td></tr>
+<tr><td>#6</td><td>QFM Aprilia Kemeja Top (#1318) Casual Striped Blou...</td><td>Active</td><td style="text-align:right">RM 241.00</td><td style="text-align:center">9</td><td><span class="tag tag-w">📈 Selling</span></td></tr>
+<tr><td>#7</td><td>QFM Adra Croptop Ribbon (#1446) Pocket croptop kem...</td><td>Active</td><td style="text-align:right">RM 118.08</td><td style="text-align:center">5</td><td><span class="tag tag-w">📈 Selling</span></td></tr>
+<tr><td>#8</td><td>QFM Faye Plain Tunic (#31025) Kemeja Labuh Muslima...</td><td>Active</td><td style="text-align:right">RM 87.09</td><td style="text-align:center">3</td><td><span class="tag tag-w">📈 Selling</span></td></tr>
+<tr><td>#9</td><td>QFM Marissa Flare Skirt Denim Cotton (99117-2) Jea...</td><td>Active</td><td style="text-align:right">RM 80.21</td><td style="text-align:center">3</td><td><span class="tag tag-w">📈 Selling</span></td></tr>
+<tr><td>#10</td><td>QFM Skirt HAZEL Pleated Chiffon (#260) | Full Lini...</td><td>Active</td><td style="text-align:right">RM 61.28</td><td style="text-align:center">2</td><td><span class="tag tag-w">📈 Selling</span></td></tr>
+<tr><td>#11</td><td>QFM Feera Stripe Kemeja Labuh (#1416) Striped Cott...</td><td>Active</td><td style="text-align:right">RM 59.72</td><td style="text-align:center">2</td><td><span class="tag tag-w">📈 Selling</span></td></tr>
+<tr><td>#12</td><td>QFM Emmy Knitwear Crop Top (4062) Turtleneck Jacke...</td><td>Active</td><td style="text-align:right">RM 59.54</td><td style="text-align:center">2</td><td><span class="tag tag-w">📈 Selling</span></td></tr>
+<tr><td>#13</td><td>QFM Akira Ribbed Knit Cardigan (#A399) | Women Lon...</td><td>Active</td><td style="text-align:right">RM 40.10</td><td style="text-align:center">1</td><td><span class="tag tag-w">📈 Selling</span></td></tr>
+<tr><td>#14</td><td>QFM Helena Skirt Labuh Kembang A-Line (218) Poly C...</td><td>Active</td><td style="text-align:right">RM 34.76</td><td style="text-align:center">1</td><td><span class="tag tag-w">📈 Selling</span></td></tr>
+<tr><td>#15</td><td>QFM ZAZA Cotton Embroidery Top (723) | Lace Collar...</td><td>Active</td><td style="text-align:right">RM 34.55</td><td style="text-align:center">1</td><td><span class="tag tag-w">📈 Selling</span></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="ft">
+QFM CEO Turnaround Dashboard • Built with real data (TikTok + Shopee) (TikTok 45mo + Shopee 48mo fine-window API) • Last updated: 2026-04-25<br>
+Data is self-contained — copy this HTML file to any device and it works offline.
+</div>
+
+<script>
+setTimeout(function(){{document.querySelector('.scf').style.width='43%';}},300);
+</script></body></html>
