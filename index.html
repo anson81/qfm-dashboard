@@ -63,7 +63,7 @@ tr:hover td{background:rgba(255,255,255,.015)}
   <h1><span class="logo">👑</span>Queen Fashion Malaysia</h1>
   <span class="subtitle">CEO Turnaround Dashboard &middot; MY Timezone</span>
   <span class="badge">LIVE</span>
-  <div class="timestamp" id="headerTime">Updated: 2026-04-26 13:34</div>
+  <div class="timestamp" id="headerTime">Updated: 2026-04-26 13:39</div>
 </div>
 
 <div class="container">
@@ -221,20 +221,21 @@ function tick(){document.getElementById('headerTime').textContent='Updated: '+ne
 tick(); setInterval(tick,60000);
 
 function initCharts(){
-const ctx1=document.getElementById('revChart').getContext('2d');
+var ctx1=document.getElementById('revChart').getContext('2d');
 new Chart(ctx1,{type:'line',data:{labels:['04/13','04/14','04/15','04/16','04/17','04/18','04/19','04/20','04/21','04/22','04/23','04/24','04/25','04/26'],datasets:[
   {label:'TikTok',data:[369.51,554.93,593.81,328.02,277.41,354.65,838.85,526.83,140.02,0,0,0,0,0],borderColor:'#10b981',backgroundColor:'rgba(16,185,129,0.08)',fill:true,tension:0.4,pointRadius:2,pointHoverRadius:5},
   {label:'Shopee',data:[97.84,285.88,216.9,259.03,521.32,288.35,363.37,305.91,106.78,220.35,169.74,299.63,427.91,88.45],borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,0.08)',fill:true,tension:0.4,pointRadius:2,pointHoverRadius:5}
-]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,labels:{usePointStyle:true,pointStyle:'circle',color:'#9ca3af',padding:16}},tooltip:{mode:'index',intersect:false,backgroundColor:'rgba(0,0,0,.85)',padding:12,cornerRadius:8}},scales:{x:{grid:{color:'#1f2937'},ticks:{color:'#9ca3af',font:{size:11}}},y:{grid:{color:'#1f2937'},ticks:{color:'#9ca3af',font:{size:11},callback:v=>'RM'+Math.round(v)}}}},interaction:{mode:'index',intersect:false}}});
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,labels:{usePointStyle:true,pointStyle:'circle',color:'#9ca3af',padding:16}},tooltip:{mode:'index',intersect:false,backgroundColor:'rgba(0,0,0,.85)',padding:12,cornerRadius:8}},scales:{x:{grid:{color:'#1f2937'},ticks:{color:'#9ca3af',font:{size:11}}},y:{grid:{color:'#1f2937'},ticks:{color:'#9ca3af',font:{size:11},callback:function(v){return 'RM'+Math.round(v)}}}},interaction:{mode:'index',intersect:false}}});
 
-const ctx2=document.getElementById('revPie').getContext('2d');
+var ctx2=document.getElementById('revPie').getContext('2d');
 new Chart(ctx2,{type:'doughnut',data:{labels:['TikTok','Shopee'],datasets:[{data:[30967,5310],backgroundColor:['#10b981','#3b82f6'],borderColor:'#111827',borderWidth:4,hoverOffset:8}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#f3f4f6',padding:16}},tooltip:{backgroundColor:'rgba(0,0,0,.85)',padding:12}}}});
 
-const ctx3=document.getElementById('ordersChart').getContext('2d');
+var ctx3=document.getElementById('ordersChart').getContext('2d');
 new Chart(ctx3,{type:'bar',data:{labels:['TikTok','Shopee'],datasets:[{label:'Orders',data:[954,152],backgroundColor:['#10b981','#3b82f6'],borderRadius:6,barThickness:40}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'rgba(0,0,0,.85)',padding:12}},scales:{x:{grid:{display:false},ticks:{color:'#f3f4f6'}},y:{grid:{color:'#1f2937'},ticks:{color:'#9ca3af'}}}}});
 }
 
-if(typeof Chart!=='undefined'){initCharts();}else{window.addEventListener('load',initCharts);}
+function tryInit(){if(typeof Chart!=='undefined'){initCharts();}else{setTimeout(tryInit,100);}}
+tryInit();
 </script>
 </body>
 </html>
