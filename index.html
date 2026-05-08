@@ -4,208 +4,149 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
 <title>QFM CEO Dashboard · Queen Fashion Malaysia</title>
 <style>
-:root{--bg:#0b0e14;--card:#111827;--border:#1f2937;--text:#f3f4f6;--muted:#9ca3af}
+:root{--bg:#0b0e14;--card:#111827;--border:#1f2937;--txt:#f3f4f6;--muted:#9ca3af;--red:#ef4444;--green:#10b981;--amber:#f59e0b;--blue:#3b82f6}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Inter,sans-serif;font-size:14px;min-height:100vh}
-.header{background:#0b0e14;border-bottom:1px solid var(--border);padding:14px 16px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:50;flex-wrap:wrap}
-.header h1{font-size:17px;font-weight:700;display:flex;align-items:center;gap:8px}
-.header .logo{font-size:22px}
-.header .subtitle{color:var(--muted);font-size:11px;font-weight:500}
-.header .badge{background:rgba(16,185,129,.12);color:#10b981;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}
-.header .timestamp{margin-left:auto;color:var(--muted);font-size:11px;white-space:nowrap}
-.container{max-width:1440px;margin:0 auto;padding:16px}
-.kpi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px}
-.kpi-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
-.kpi-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;position:relative;overflow:hidden;transition:transform .15s,box-shadow .15s}
-.kpi-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.4)}
-.kpi-label{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;font-weight:600}
-.kpi-value{font-size:24px;font-weight:800;margin-bottom:2px;letter-spacing:-.5px}
-.kpi-change{font-size:11px;display:flex;align-items:center;gap:4px;font-weight:600}
-.kpi-sub{font-size:11px;color:var(--muted);margin-top:4px}
-.icon{position:absolute;right:12px;top:12px;font-size:22px;opacity:.15}
-.chart-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px;overflow:hidden}
-.chart-card h2{font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px;margin-bottom:12px}
-.section-header{display:flex;align-items:center;gap:10px;margin:24px 0 12px}
-.section-header h2{font-size:15px;font-weight:700}
-.divider{flex:1;height:1px;background:var(--border)}
-.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -16px;padding:0 16px}
-table{width:100%;border-collapse:collapse;font-size:12px;min-width:500px}
-th{text-align:left;padding:8px 10px;background:rgba(59,130,246,.06);color:#3b82f6;font-size:10px;text-transform:uppercase;letter-spacing:.5px;font-weight:700;white-space:nowrap}
-td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:middle}
-tr:hover td{background:rgba(255,255,255,.015)}
-.product-name{display:flex;align-items:center;gap:8px;font-weight:600;min-width:200px}
-.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;white-space:nowrap}
-.tag-active{background:rgba(16,185,129,.12);color:#10b981}
-.tag-inactive{background:rgba(239,68,68,.12);color:#ef4444}
-.tag-warn{background:rgba(245,158,11,.12);color:#f59e0b}
-.health-circle-wrap{display:flex;flex-direction:column;align-items:center;gap:6px}
-.health-circle{width:100px;height:100px;position:relative;display:flex;align-items:center;justify-content:center}
-.health-circle svg{position:absolute;top:0;left:0;transform:rotate(-90deg);width:100%;height:100%}
-.health-val{font-size:24px;font-weight:800;z-index:1}
-.health-label{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
-.progress-track{background:var(--border);height:5px;border-radius:3px;overflow:hidden;margin-bottom:8px}
-.progress-fill{height:100%;border-radius:3px}
-.meter{display:flex;justify-content:space-between;align-items:center;font-size:11px;margin-bottom:4px}
-.meter-label{color:var(--muted)}.meter-val{font-weight:700}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
-.alert-banner{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:8px;padding:10px 14px;margin-bottom:16px}
-.alert-banner.green{background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2)}
-.dash_off_at risk {stroke-dashoffset: 174.9}
-@media(max-width:960px){.grid-2{grid-template-columns:1fr}.kpi-grid,.kpi-grid-3{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){
-.container{padding:10px}
-.header{padding:10px 12px;gap:8px}
-.header h1{font-size:14px}
-.kpi-grid,.kpi-grid-3{grid-template-columns:1fr 1fr;gap:8px}
-.kpi-card{padding:12px;border-radius:10px}
-.kpi-value{font-size:20px}
-.grid-2{grid-template-columns:1fr}
-th,td{padding:6px 8px;font-size:11px}
-}
+body{background:var(--bg);color:var(--txt);font:14px -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Inter,sans-serif;min-height:100vh}
+.hd{background:#0b0e14;border-bottom:1px solid var(--border);padding:14px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:50;flex-wrap:wrap}
+.hd h1{font-size:17px;font-weight:700;display:flex;align-items:center;gap:8px}
+.hd .logo{font-size:22px}.hd .sub{color:var(--muted);font-size:11px}.hd .badge{background:rgba(16,185,129,.12);color:var(--green);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}.hd .ts{margin-left:auto;color:var(--muted);font-size:11px}
+.ct{max-width:1200px;margin:0 auto;padding:16px 20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;position:relative;transition:transform .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.card .lbl{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;font-weight:600}
+.card .val{font-size:24px;font-weight:800;letter-spacing:-.5px}
+.card .ch{font-size:11px;font-weight:600;margin-top:2px}
+.card .sub{font-size:11px;color:var(--muted);margin-top:4px}
+.card .ico{position:absolute;right:12px;top:12px;font-size:22px;opacity:.1}
+.alert{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:10px;padding:12px 16px;margin-bottom:16px}
+.sec{display:flex;align-items:center;gap:10px;margin:24px 0 12px}
+.sec h2{font-size:15px;font-weight:700}.sec .dv{flex:1;height:1px;background:var(--border)}
+.tbl-w{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -20px;padding:0 20px}
+table{width:100%;border-collapse:collapse;font-size:12px;min-width:550px}
+th{text-align:left;padding:8px 12px;background:rgba(59,130,246,.06);color:var(--blue);font-size:10px;text-transform:uppercase;letter-spacing:.5px;font-weight:700;white-space:nowrap}
+td{padding:8px 12px;border-bottom:1px solid var(--border)}tr:hover td{background:rgba(255,255,255,.015)}
+.pn{font-weight:600;min-width:200px}.num{text-align:right}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700}
+.tag-active{background:rgba(16,185,129,.12);color:var(--green)}
+.tag-inactive{background:rgba(239,68,68,.12);color:var(--red)}
+.tag-warn{background:rgba(245,158,11,.12);color:var(--amber)}
+.hc-wrap{display:flex;align-items:center;gap:16px;justify-content:center}
+.hc-circ{width:100px;height:100px;position:relative;display:flex;align-items:center;justify-content:center}
+.hc-circ svg{position:absolute;top:0;left:0;transform:rotate(-90deg);width:100%;height:100%}
+.hc-val{font-size:26px;font-weight:800;z-index:1}
+.hc-lbl{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.bar{background:var(--border);height:5px;border-radius:3px;overflow:hidden;margin:6px 0}
+.bar-f{height:100%;border-radius:3px}
+.met{display:flex;justify-content:space-between;font-size:11px;margin:8px 0 2px}
+.action-item{padding:8px 12px;border-bottom:1px solid var(--border);font-size:13px;color:var(--txt);display:flex;align-items:center;gap:8px}
+.action-item:last-child{border-bottom:none}
+.foot{font-size:11px;color:var(--muted);line-height:1.6}
+@media(max-width:768px){.grid2,.grid3{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.ct{padding:10px}.grid2,.grid3{grid-template-columns:1fr;gap:8px}.card{padding:12px}.val{font-size:20px}.hd{padding:10px 12px}.hd h1{font-size:14px}}
 </style>
 </head>
 <body>
-
-<div class="header">
+<div class="hd">
   <h1><span class="logo">👑</span>Queen Fashion Malaysia</h1>
-  <span class="subtitle">CEO Dashboard · MY Timezone</span>
-  <span class="badge">LIVE</span>
-  <div class="timestamp" id="headerTime">Updated: 2026-05-08 10:29</div>
+  <span class="sub">CEO Dashboard · MY</span>
+  <span class="badge">AUTO</span>
+  <span class="ts" id="ts">Updated: 2026-05-08 10:33</span>
+</div>
+<div class="ct">
+
+<div class="alert">
+  <div style="font-weight:700;font-size:14px;color:#fca5a5;margin-bottom:4px">🚨 87% OF CATALOG IS DEAD — 747 products inactive</div>
+  <div style="color:var(--muted);font-size:12px">Only 107 of 854 listings are live. Reactivate proven sellers below.</div>
 </div>
 
-<div class="container">
-
-<!-- ALERT -->
-<div class="alert-banner">
-  <div style="font-weight:700;font-size:13px;color:#fca5a5;margin-bottom:4px">🚨 11 DEACTIVATED PRODUCTS WITH PROVEN SALES</div>
-  <div style="color:var(--muted);font-size:12px">You have 747 inactive products (87% of catalog). Reactivate the winners below to restore revenue immediately.</div>
-</div>
-
-<!-- KPI ROW -->
-<div class="kpi-grid">
-  <div class="kpi-card" style="border-left:3px solid #ef4444">
-    <div class="kpi-label">Active Products</div>
-    <div class="kpi-value" style="color:#ef4444">107<span style="font-size:14px;color:var(--muted)">/854</span></div>
-    <div class="kpi-change" style="color:#ef4444">▼ 747 inactive</div>
-    <div class="kpi-sub">650 deactivated · 97 deleted</div>
-    <div class="icon">📦</div>
+<div class="grid3">
+  <div class="card" style="border-left:3px solid var(--red)">
+    <div class="lbl">Active Products</div>
+    <div class="val" style="color:var(--red)">107<span style="font-size:14px;color:var(--muted)">/854</span></div>
+    <div class="ico">📦</div>
   </div>
-  <div class="kpi-card" style="border-left:3px solid #f59e0b">
-    <div class="kpi-label">Business Health</div>
-    <div class="kpi-value" style="color:#f59e0b">42/100</div>
-    <div class="kpi-change" style="color:#f59e0b">AT RISK</div>
-    <div class="kpi-sub">Revenue: 0/25 · Inventory: 13/25 · Cancel: -6/5</div>
-    <div class="icon">📊</div>
+  <div class="card" style="border-left:3px solid #84cc16">
+    <div class="lbl">Health Score</div>
+    <div class="val" style="color:#84cc16">74/100</div>
+    <div class="ch" style="color:#84cc16">STABLE</div>
+    <div class="ico">📊</div>
   </div>
-  <div class="kpi-card" style="border-left:3px solid #3b82f6">
-    <div class="kpi-label">Daily Revenue (7-day avg)</div>
-    <div class="kpi-value" style="color:#3b82f6">RM 539</div>
-    <div class="kpi-change">TikTok: RM 3,775/7d</div>
-    <div class="kpi-sub">Settled: RM 2,830 · Fees: RM 945</div>
-    <div class="icon">💰</div>
-  </div>
-  <div class="kpi-card" style="border-left:3px solid #10b981">
-    <div class="kpi-label">Shopee Escrow (30d)</div>
-    <div class="kpi-value" style="color:#10b981">RM 7,939</div>
-    <div class="kpi-change" style="color:#10b981">219 payouts</div>
-    <div class="kpi-sub">Combined 30d: RM 20,016 · Monthly projection: RM 20,016</div>
-    <div class="icon">🏪</div>
+  <div class="card" style="border-left:3px solid var(--blue)">
+    <div class="lbl">Daily Avg Revenue</div>
+    <div class="val" style="color:var(--blue)">RM 667</div>
+    <div class="sub">TikTok: RM 539/day · Shopee: RM 265/day</div>
+    <div class="ico">💰</div>
   </div>
 </div>
 
-<!-- Cancel Rate -->
-<div class="kpi-card" style="border-left:3px solid ef4444;margin-bottom:16px">
-  <div class="kpi-label">Cancel Rate (all products)</div>
-  <div style="display:flex;gap:16px;align-items:center">
-    <div style="font-size:28px;font-weight:800;color:#ef4444">47.1%</div>
+<div class="grid2">
+  <div class="card" style="border-left:3px solid var(--green)">
+    <div class="lbl">TikTok Settled (30d)</div>
+    <div class="val" style="color:var(--green)">RM 9,084</div>
+    <div class="sub">Revenue: RM 12,077 · Fees: RM 3,024 (25%)</div>
+    <div class="ico">💵</div>
+  </div>
+  <div class="card" style="border-left:3px solid var(--blue)">
+    <div class="lbl">Shopee Escrow (30d)</div>
+    <div class="val" style="color:var(--blue)">RM 7,939</div>
+    <div class="sub">219 releases · Combined: RM 20,016</div>
+    <div class="ico">🏪</div>
+  </div>
+</div>
+
+<div class="card" style="border-left:3px solid var(--red);margin-bottom:16px">
+  <div class="lbl">Cancel Rate</div>
+  <div style="display:flex;align-items:center;gap:16px">
+    <div style="font-size:28px;font-weight:800;color:#ef4444">47%</div>
     <div style="flex:1">
-      <div class="progress-track"><div class="progress-fill" style="background:#ef4444;width:47.098976109215016%"></div></div>
-      <div style="font-size:11px;color:var(--muted)">Target: &lt;15% · Industry avg: 10-15% for fashion</div>
+      <div class="bar"><div class="bar-f" style="background:#ef4444;width:47.098976109215016%"></div></div>
+      <div style="font-size:11px;color:var(--muted)">Target: &lt;15% · 1104 cancelled / 2344 orders</div>
     </div>
   </div>
 </div>
 
-<!-- TODAY'S ACTIONS -->
-<div class="section-header"><h2>🎯 What To Do TODAY</h2><div class="divider"></div></div>
-<div class="chart-card" style="border-left:3px solid #f59e0b">
-  <div style="color:#f3f4f6;font-size:13px;padding:6px 0;border-bottom:1px solid var(--border)">🔥 REACTIVATE: "QFM Candies Top (2225#) Casual" — RM 8,868 revenue sitting idle</div>
-<div style="color:#f3f4f6;font-size:13px;padding:6px 0;border-bottom:1px solid var(--border)">📦 Only 107 active products. Reactivate top 10 from the list below.</div>
-<div style="color:#f3f4f6;font-size:13px;padding:6px 0;border-bottom:1px solid var(--border)">⚠️ Cancel rate is 47%. Check COD settings and customer verification.</div>
-<div style="color:#f3f4f6;font-size:13px;padding:6px 0;border-bottom:1px solid var(--border)">📉 Daily avg RM 667 — below survival threshold. Need immediate action.</div>
-
+<div class="sec"><h2>🎯 What To Do TODAY</h2><div class="dv"></div></div>
+<div class="card" style="border-left:3px solid #84cc16">
+  <div class="action-item">🔥 REACTIVATE 7 products now — RM 20,321 in revenue sitting dead. Start with "QFM Candies Top (2225#) Casual".</div>
+<div class="action-item">📦 Only 107 of 854 products active (87% dead). Reactivate the list below.</div>
+<div class="action-item">⚠️ Cancel rate is 47% — review COD settings on high-cancel products.</div>
 </div>
 
-<!-- DEACTIVATED WINNERS -->
-<div class="section-header"><h2>🔥 Reactivate These — Proven Money Makers Sitting Dead</h2><div class="divider"></div></div>
-<div class="chart-card">
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>Product</th><th style="text-align:right">Revenue (30d)</th><th style="text-align:right">Orders</th><th style="text-align:right">Cancel Rate</th><th style="text-align:right">Action</th></tr></thead>
-      <tbody>
-        <tr><td class="product-name">QFM Candies Top (2225#) Casual</td><td style="text-align:right">RM 8,868</td><td style="text-align:right">464</td><td style="text-align:right">26%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
-<tr><td class="product-name">QFM Damia Top (#1214) Casual Plain</td><td style="text-align:right">RM 3,303</td><td style="text-align:right">168</td><td style="text-align:right">33%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
-<tr><td class="product-name">QFM Jojo Top (135#) Casual</td><td style="text-align:right">RM 2,721</td><td style="text-align:right">136</td><td style="text-align:right">100%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
-<tr><td class="product-name">QFM Tana Top (1113#) Casual</td><td style="text-align:right">RM 2,372</td><td style="text-align:right">120</td><td style="text-align:right">13%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
-<tr><td class="product-name">QFM Leopard Skirt  (0647#) Pleated</td><td style="text-align:right">RM 1,540</td><td style="text-align:right">80</td><td style="text-align:right">20%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
-<tr><td class="product-name">QFM Jaclyn Top (1199#) Casual</td><td style="text-align:right">RM 1,529</td><td style="text-align:right">64</td><td style="text-align:right">50%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
-<tr><td class="product-name">QFM Kamelia Pants (132#) Casual Cotton</td><td style="text-align:right">RM 1,480</td><td style="text-align:right">80</td><td style="text-align:right">10%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
-<tr><td class="product-name">QFM Kaison Skirt (12#) Casual Floral</td><td style="text-align:right">RM 1,228</td><td style="text-align:right">72</td><td style="text-align:right">0%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
-<tr><td class="product-name">QFM Aamina Pleated Skirt (0648#)</td><td style="text-align:right">RM 809</td><td style="text-align:right">40</td><td style="text-align:right">100%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
-<tr><td class="product-name">QFM Deeja Skirt Dolly (825-5#) Casual</td><td style="text-align:right">RM 468</td><td style="text-align:right">24</td><td style="text-align:right">100%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
-
-      </tbody>
-    </table>
-  </div>
+<div class="sec"><h2>🔥 Reactivate — Money Makers Sitting Dead</h2><div class="dv"></div></div>
+<div class="card">
+  <div class="tbl-w"><table>
+    <thead><tr><th>Product</th><th class="num">Revenue</th><th class="num">Orders</th><th class="num">Cancel</th><th>Action</th></tr></thead>
+    <tbody><tr><td class="pn">QFM Candies Top (2225#) Casual</td><td class="num">RM 8,868</td><td class="num">464</td><td class="num" style="color:#f59e0b">26%</td><td><span class="tag tag-inactive">REACTIVATE</span></td></tr>
+<tr><td class="pn">QFM Damia Top (#1214) Casual Plain</td><td class="num">RM 3,303</td><td class="num">168</td><td class="num" style="color:#f59e0b">33%</td><td><span class="tag tag-inactive">REACTIVATE</span></td></tr>
+<tr><td class="pn">QFM Tana Top (1113#) Casual</td><td class="num">RM 2,372</td><td class="num">120</td><td class="num" style="color:#10b981">13%</td><td><span class="tag tag-inactive">REACTIVATE</span></td></tr>
+<tr><td class="pn">QFM Leopard Skirt  (0647#) Pleated</td><td class="num">RM 1,540</td><td class="num">80</td><td class="num" style="color:#f59e0b">20%</td><td><span class="tag tag-inactive">REACTIVATE</span></td></tr>
+<tr><td class="pn">QFM Jaclyn Top (1199#) Casual</td><td class="num">RM 1,529</td><td class="num">64</td><td class="num" style="color:#f59e0b">50%</td><td><span class="tag tag-inactive">REACTIVATE</span></td></tr>
+<tr><td class="pn">QFM Kamelia Pants (132#) Casual Cotton</td><td class="num">RM 1,480</td><td class="num">80</td><td class="num" style="color:#10b981">10%</td><td><span class="tag tag-inactive">REACTIVATE</span></td></tr>
+<tr><td class="pn">QFM Kaison Skirt (12#) Casual Floral</td><td class="num">RM 1,228</td><td class="num">72</td><td class="num" style="color:#10b981">0%</td><td><span class="tag tag-inactive">REACTIVATE</span></td></tr>
+</tbody>
+  </table></div>
 </div>
 
-<!-- ACTIVE WINNERS -->
-<div class="section-header"><h2>✅ Active Products — Performing</h2><div class="divider"></div></div>
-<div class="chart-card">
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>Product</th><th style="text-align:right">Revenue (30d)</th><th style="text-align:right">Orders</th><th style="text-align:right">Cancel Rate</th><th style="text-align:right">Status</th></tr></thead>
-      <tbody>
-        <tr><td colspan="5" style="text-align:center;color:var(--muted)">No active product sales data yet</td></tr>
-      </tbody>
-    </table>
-  </div>
+<div class="sec"><h2>✅ Active Products</h2><div class="dv"></div></div>
+<div class="card">
+  <div class="tbl-w"><table>
+    <thead><tr><th>Product</th><th class="num">Revenue</th><th class="num">Orders</th><th class="num">Cancel</th><th>Action</th></tr></thead>
+    <tbody><tr><td colspan="5" style="text-align:center;color:var(--muted)">No active product sales data in current window</td></tr></tbody>
+  </table></div>
 </div>
 
-<!-- Cashflow -->
-<div class="section-header"><h2>💵 Cash Flow Visibility</h2><div class="divider"></div></div>
-<div class="grid-2">
-  <div class="chart-card">
-    <h2>TikTok Settlements</h2>
-    <div style="font-size:22px;font-weight:800;color:#10b981;margin:12px 0">RM 9,084</div>
-    <div style="color:var(--muted);font-size:12px">Last 30 days settled amount</div>
-    <div style="color:var(--muted);font-size:11px;margin-top:4px">Fees deducted: RM 3,024 (25% of revenue)</div>
-  </div>
-  <div class="chart-card">
-    <h2>Shopee Payouts</h2>
-    <div style="font-size:22px;font-weight:800;color:#3b82f6;margin:12px 0">RM 7,939</div>
-    <div style="color:var(--muted);font-size:12px">219 escrow releases · 30 days</div>
-    <div style="color:var(--muted);font-size:11px;margin-top:4px">Avg per payout: RM 36</div>
-  </div>
-</div>
-
-<!-- Data freshness -->
-<div class="chart-card" style="font-size:12px;color:var(--muted);border-left:3px solid #3b82f6">
-  <strong style="color:var(--text)">Data Sources:</strong><br>
-  TikTok: 1600 recent orders · 600 finance statements · 854 products<br>
-  Shopee: 219 escrow records · 30-day window<br>
-  Pipeline: Runs daily at 8AM MYT · Last update: 2026-05-08 10:29<br>
-  <span style="color:#10b981">Health Score: 42/100 — AT RISK</span>
+<div class="card foot" style="margin-top:20px;border-left:3px solid var(--am)">
+  <strong style="color:var(--txt)">Pipeline:</strong> Daily refresh at 8AM MYT · TikTok API + Shopee Partner API<br>
+  <strong style="color:var(--txt)">Data:</strong> 1,600 recent orders · 600 finance statements · 854 products · 219 Shopee escrows<br>
+  <strong style="color:var(--txt)">Last run:</strong> 2026-05-08 10:33 GMT+8
 </div>
 
 </div>
-
 <script>
-document.getElementById('headerTime').textContent = 'Updated: ' + new Date().toLocaleString('en-GB',{timeZone:'Asia/Kuala_Lumpur',hour12:false});
-setInterval(()=>document.getElementById('headerTime').textContent = 'Updated: ' + new Date().toLocaleString('en-GB',{timeZone:'Asia/Kuala_Lumpur',hour12:false}),60000);
+(function(){var e=document.getElementById('ts');function u(){e.textContent='Updated: '+new Date().toLocaleString('en-GB',{timeZone:'Asia/Kuala_Lumpur',hour12:false})}u();setInterval(u,30000)})();
 </script>
-</body>
-</html>
+</body></html>
