@@ -4,154 +4,157 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<title>QFM CEO Dashboard · Queen Fashion Malaysia</title>
+<title>QFM Dashboard · Queen Fashion Malaysia</title>
 <style>
-:root{--bg:#0b0e14;--card:#111827;--border:#1f2937;--txt:#f3f4f6;--muted:#9ca3af;--red:#ef4444;--green:#10b981;--amber:#f59e0b;--blue:#3b82f6}
+:root{--bg:#0b0e14;--card:#111827;--bdr:#1f2937;--t:#f3f4f6;--m:#9ca3af;--r:#ef4444;--g:#10b981;--a:#f59e0b;--b:#3b82f6}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--txt);font:14px -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Inter,sans-serif;min-height:100vh}
-.hd{background:#0b0e14;border-bottom:1px solid var(--border);padding:14px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:50;flex-wrap:wrap}
+body{background:var(--bg);color:var(--t);font:14px -apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;min-height:100vh}
+.hd{background:#0b0e14;border-bottom:1px solid var(--bdr);padding:14px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:50;flex-wrap:wrap}
 .hd h1{font-size:17px;font-weight:700;display:flex;align-items:center;gap:8px}
-.hd .logo{font-size:22px}.hd .sub{color:var(--muted);font-size:11px}.hd .badge{background:rgba(16,185,129,.12);color:var(--green);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}.hd .ts{margin-left:auto;color:var(--muted);font-size:11px}
+.hd .lo{font-size:22px}.hd .sb{color:var(--m);font-size:11px}.hd .bd{background:rgba(16,185,129,.12);color:var(--g);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}.hd .ts{margin-left:auto;color:var(--m);font-size:11px}
 .ct{max-width:1200px;margin:0 auto;padding:16px 20px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
-.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;position:relative;transition:transform .15s}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:16px}
+.card{background:var(--card);border:1px solid var(--bdr);border-radius:12px;padding:16px;position:relative;transition:transform .15s}
 .card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.4)}
-.card .lbl{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;font-weight:600}
-.card .val{font-size:24px;font-weight:800;letter-spacing:-.5px}
-.card .ch{font-size:11px;font-weight:600;margin-top:2px}
-.card .sub{font-size:11px;color:var(--muted);margin-top:4px}
-.card .ico{position:absolute;right:12px;top:12px;font-size:22px;opacity:.1}
-.alert{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:10px;padding:12px 16px;margin-bottom:16px}
-.sec{display:flex;align-items:center;gap:10px;margin:24px 0 12px}
-.sec h2{font-size:15px;font-weight:700}.sec .dv{flex:1;height:1px;background:var(--border)}
-.tbl-w{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -20px;padding:0 20px}
-table{width:100%;border-collapse:collapse;font-size:12px;min-width:550px}
-th{text-align:left;padding:8px 12px;background:rgba(59,130,246,.06);color:var(--blue);font-size:10px;text-transform:uppercase;letter-spacing:.5px;font-weight:700;white-space:nowrap}
-td{padding:8px 12px;border-bottom:1px solid var(--border)}tr:hover td{background:rgba(255,255,255,.015)}
-.pn{font-weight:600;min-width:200px}.num{text-align:right}
-.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700}
-.tag-active{background:rgba(16,185,129,.12);color:var(--green)}
-.tag-inactive{background:rgba(239,68,68,.12);color:var(--red)}
-.tag-warn{background:rgba(245,158,11,.12);color:var(--amber)}
-.hc-wrap{display:flex;align-items:center;gap:16px;justify-content:center}
-.hc-circ{width:100px;height:100px;position:relative;display:flex;align-items:center;justify-content:center}
-.hc-circ svg{position:absolute;top:0;left:0;transform:rotate(-90deg);width:100%;height:100%}
-.hc-val{font-size:26px;font-weight:800;z-index:1}
-.hc-lbl{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
-.bar{background:var(--border);height:5px;border-radius:3px;overflow:hidden;margin:6px 0}
-.bar-f{height:100%;border-radius:3px}
-.met{display:flex;justify-content:space-between;font-size:11px;margin:8px 0 2px}
-.action-item{padding:8px 12px;border-bottom:1px solid var(--border);font-size:13px;color:var(--txt);display:flex;align-items:center;gap:8px}
-.action-item:last-child{border-bottom:none}
-.foot{font-size:11px;color:var(--muted);line-height:1.6}
-@media(max-width:768px){.grid2,.grid3{grid-template-columns:1fr 1fr}}
-@media(max-width:480px){.ct{padding:10px}.grid2,.grid3{grid-template-columns:1fr;gap:8px}.card{padding:12px}.val{font-size:20px}.hd{padding:10px 12px}.hd h1{font-size:14px}}
+.card .lbl{color:var(--m);font-size:10px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;font-weight:600}
+.card .val{font-size:22px;font-weight:800;letter-spacing:-.5px}
+.card .sb{font-size:11px;color:var(--m);margin-top:4px}
+.sec{display:flex;align-items:center;gap:10px;margin:28px 0 12px}
+.sec h2{font-size:15px;font-weight:700}.sec .dv{flex:1;height:1px;background:var(--bdr)}
+.tbl-w{overflow-x:auto;margin:0 -20px;padding:0 20px}
+table{width:100%;border-collapse:collapse;font-size:12px;min-width:400px}
+th{text-align:left;padding:8px 12px;background:rgba(59,130,246,.06);color:var(--b);font-size:10px;text-transform:uppercase;letter-spacing:.5px;font-weight:700}
+td{padding:8px 12px;border-bottom:1px solid var(--bdr)}tr:hover td{background:rgba(255,255,255,.015)}
+.pn{font-weight:600;min-width:180px}.num{text-align:right}
+.act{padding:8px 12px;border-bottom:1px solid var(--bdr);font-size:13px}
+.foot{font-size:11px;color:var(--m);line-height:1.6;margin-top:16px}
+@media(max-width:768px){.g2,.g3{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.ct{padding:10px}.g2,.g3{grid-template-columns:1fr;gap:8px}.card{padding:12px}.val{font-size:18px}.hd{padding:10px 12px}.hd h1{font-size:14px}}
 </style>
 </head>
 <body>
-<div class="hd">
-  <h1><span class="logo">👑</span>Queen Fashion Malaysia</h1>
-  <span class="sub">CEO Dashboard · MY</span>
-  <span class="badge">AUTO</span>
-  <span class="ts" id="ts">Updated: 2026-05-08 11:41</span>
-</div>
+<div class="hd"><h1><span class="lo">👑</span>Queen Fashion Malaysia</h1><span class="sb">CEO Dashboard · MY</span><span class="bd">LIVE</span><span class="ts" id="ts">Updated: 2026-05-08 20:31</span></div>
 <div class="ct">
 
-<div class="alert">
-  <div style="font-weight:700;font-size:14px;color:#fca5a5;margin-bottom:4px">🚨 87% OF CATALOG IS DEAD — 747 products inactive</div>
-  <div style="color:var(--muted);font-size:12px">Only 107 of 854 listings are live. Reactivate proven sellers below.</div>
-</div>
-
-<div class="grid3">
-  <div class="card" style="border-left:3px solid var(--red)">
-    <div class="lbl">Active Products</div>
-    <div class="val" style="color:var(--red)">107<span style="font-size:14px;color:var(--muted)">/854</span></div>
-    <div class="ico">📦</div>
+<!-- KPI Row -->
+<div class="g3">
+  <div class="card" style="border-left:3px solid var(--g)">
+    <div class="lbl">Shopee (Annual escrow)</div>
+    <div class="val" style="color:var(--g)">RM 120,515</div>
+    <div class="sb">180 active products</div>
   </div>
-  <div class="card" style="border-left:3px solid #84cc16">
-    <div class="lbl">Health Score</div>
-    <div class="val" style="color:#84cc16">74/100</div>
-    <div class="ch" style="color:#84cc16">STABLE</div>
-    <div class="ico">📊</div>
+  <div class="card" style="border-left:3px solid var(--b)">
+    <div class="lbl">TikTok (Monthly net)</div>
+    <div class="val" style="color:var(--b)">RM 10,685</div>
+    <div class="sb">780 active products</div>
   </div>
-  <div class="card" style="border-left:3px solid var(--blue)">
-    <div class="lbl">Daily Avg Revenue</div>
-    <div class="val" style="color:var(--blue)">RM 666</div>
-    <div class="sub">TikTok: RM 539/day · Shopee: RM 264/day</div>
-    <div class="ico">💰</div>
+  <div class="card" style="border-left:3px solid var(--a)">
+    <div class="lbl">Combined (30d)</div>
+    <div class="val" style="color:var(--a)">RM 6,012</div>
+    <div class="sb">~RM 200/day</div>
   </div>
-</div>
-
-<div class="grid2">
-  <div class="card" style="border-left:3px solid var(--green)">
-    <div class="lbl">TikTok Settled (30d)</div>
-    <div class="val" style="color:var(--green)">RM 9,084</div>
-    <div class="sub">Revenue: RM 12,077 · Fees: RM 3,024 (25%)</div>
-    <div class="ico">💵</div>
-  </div>
-  <div class="card" style="border-left:3px solid var(--blue)">
-    <div class="lbl">Shopee Escrow (30d)</div>
-    <div class="val" style="color:var(--blue)">RM 7,914</div>
-    <div class="sub">218 releases · Combined: RM 19,991</div>
-    <div class="ico">🏪</div>
+  <div class="card" style="border-left:3px solid var(--r)">
+    <div class="lbl">⚠️ Low Stock Alerts</div>
+    <div class="val" style="color:var(--r)">80</div>
+    <div class="sb">0 out of stock</div>
   </div>
 </div>
 
-<div class="card" style="border-left:3px solid var(--red);margin-bottom:16px">
-  <div class="lbl">Cancel Rate</div>
-  <div style="display:flex;align-items:center;gap:16px">
-    <div style="font-size:28px;font-weight:800;color:#ef4444">49%</div>
-    <div style="flex:1">
-      <div class="bar"><div class="bar-f" style="background:#ef4444;width:48.51228978007762%"></div></div>
-      <div style="font-size:11px;color:var(--muted)">Target: &lt;15% · 1125 cancelled / 2319 orders</div>
-    </div>
-  </div>
+<!-- Alerts -->
+<div class="card" style="border-left:3px solid var(--r);margin-bottom:16px">
+  <div style="font-weight:700;font-size:13px;margin-bottom:6px">🎯 Action Required</div>
+  <div class="act">📦 80 products have stock ≤ 5 — restock QFM Suri Waffle Top (1536) Casual S and 79 others</div><div class="act">📉 Combined daily avg RM 200 — below target</div>
 </div>
 
-<div class="sec"><h2>🎯 What To Do TODAY</h2><div class="dv"></div></div>
-<div class="card" style="border-left:3px solid #84cc16">
-  <div class="action-item">📦 Only 107 of 854 products active (87% dead). Reactivate the list below.</div>
-<div class="action-item">⚠️ Cancel rate is 49% — review COD settings on high-cancel products.</div>
-<div class="action-item">✅ PUSH "QFM Azita Knitted Cardigan (1379-2) Knit" — your top active performer. Post a video today.</div>
-</div>
-
-<div class="sec"><h2>🔥 Reactivate — Money Makers Sitting Dead</h2><div class="dv"></div></div>
-<div class="card">
-  <div class="tbl-w"><table>
-    <thead><tr><th>Product</th><th class="num">Revenue</th><th class="num">Orders</th><th class="num">Cancel</th><th>Action</th></tr></thead>
-    <tbody><tr><td colspan="5" style="text-align:center;color:var(--muted)">No deactivated products with reasonable cancel rates</td></tr></tbody>
-  </table></div>
-</div>
-
-<div class="sec"><h2>✅ Active Products</h2><div class="dv"></div></div>
-<div class="card">
-  <div class="tbl-w"><table>
-    <thead><tr><th>Product</th><th class="num">Revenue</th><th class="num">Orders</th><th class="num">Cancel</th><th>Action</th></tr></thead>
-    <tbody><tr><td class="pn">QFM Azita Knitted Cardigan (1379-2) Knitwear Cardigan Viral Button</td><td class="num">RM 11,757</td><td class="num">418</td><td class="num">44%</td><td><span class="tag tag-active">PUSH</span></td></tr>
-<tr><td class="pn">QFM Elnaura Knitted Striped Top (A606) | Knitwear belang</td><td class="num">RM 11,320</td><td class="num">501</td><td class="num">21%</td><td><span class="tag tag-active">PUSH</span></td></tr>
-<tr><td class="pn">QFM Melody Batwing Knitwear Top (#3299) | Oversize Modest Blouse Musli</td><td class="num">RM 9,541</td><td class="num">281</td><td class="num">56%</td><td><span class="tag tag-active">PUSH</span></td></tr>
-<tr><td class="pn">QFM Rosee Batwing Button Knitwear Top (#3289) | Oversize Modest Blouse</td><td class="num">RM 3,757</td><td class="num">100</td><td class="num">50%</td><td><span class="tag tag-active">PUSH</span></td></tr>
-<tr><td class="pn">QFM Aprilia Kemeja Top (#1318) Casual Striped Blouse | Baju Kemeja Bel</td><td class="num">RM 3,746</td><td class="num">145</td><td class="num">48%</td><td><span class="tag tag-active">PUSH</span></td></tr>
-<tr><td class="pn">QFM Ana Batwing Knitwear Viral (1532) Oversize Knitwear</td><td class="num">RM 3,315</td><td class="num">99</td><td class="num">60%</td><td><span class="tag tag-active">PUSH</span></td></tr>
-<tr><td class="pn">QFM Melody Batwing Knitwear Top (#3299) | Blouse Muslimah Oversize Mod</td><td class="num">RM 3,253</td><td class="num">94</td><td class="num">29%</td><td><span class="tag tag-active">PUSH</span></td></tr>
-<tr><td class="pn">QFM Adra Croptop Ribbon (#1446) Pocket croptop kemeja</td><td class="num">RM 1,967</td><td class="num">88</td><td class="num">49%</td><td><span class="tag tag-active">PUSH</span></td></tr>
-<tr><td class="pn">QFM Eva Dolly Pleated Skirt (238) Kain Labuh Chiffon Muslimah Free Siz</td><td class="num">RM 835</td><td class="num">25</td><td class="num">56%</td><td><span class="tag tag-active">PUSH</span></td></tr>
-<tr><td class="pn">QFM Faye Plain Tunic (#31025) Kemeja Labuh Muslimah Baju Wanita Tunik</td><td class="num">RM 643</td><td class="num">24</td><td class="num">33%</td><td><span class="tag tag-active">PUSH</span></td></tr>
-<tr><td class="pn">QFM Reene Corduroy Jacket Croptop 9896 Outerwear Cardigan Knitwear unt</td><td class="num">RM 373</td><td class="num">14</td><td class="num">14%</td><td><span class="tag tag-active">PUSH</span></td></tr>
-<tr><td class="pn">QFM Nurizz Knitwear (1328-2) Casual</td><td class="num">RM 365</td><td class="num">15</td><td class="num">87%</td><td><span class="tag tag-active">PUSH</span></td></tr>
+<!-- TikTok Top Products -->
+<div class="sec"><h2>🎵 TikTok — Top Products (last 12 days)</h2><div class="dv"></div></div>
+<div class="card"><div class="tbl-w"><table>
+  <thead><tr><th>Product</th><th class="num">Revenue</th><th class="num">Orders</th></tr></thead>
+  <tbody><tr><td class="pn">QFM Melody Batwing Knitwear Top (#3299)</td><td class="num">RM 21,286</td><td class="num">627</td></tr>
+<tr><td class="pn">QFM Azita Knitted Cardigan (1379-2) Knitwear Cardigan V</td><td class="num">RM 20,443</td><td class="num">730</td></tr>
+<tr><td class="pn">QFM Elnaura Knitted Striped Top A606</td><td class="num">RM 13,025</td><td class="num">574</td></tr>
+<tr><td class="pn">QFM Elnaura Knitted Striped Top (A606)</td><td class="num">RM 9,838</td><td class="num">435</td></tr>
+<tr><td class="pn">QFM Rosee Batwing Button Knitwear Top (#3289)</td><td class="num">RM 6,053</td><td class="num">167</td></tr>
+<tr><td class="pn">QFM Ana Batwing Knitwear Viral (1532) Oversize Knitwear</td><td class="num">RM 5,233</td><td class="num">158</td></tr>
+<tr><td class="pn">QFM Aprilia Kemeja Top (#1318) Casual Striped Blouse</td><td class="num">RM 4,194</td><td class="num">165</td></tr>
+<tr><td class="pn">QFM Adra Croptop Ribbon (#1446) Pocket croptop kemeja</td><td class="num">RM 2,818</td><td class="num">125</td></tr>
+<tr><td class="pn">QFM Zeena Manik Knitwear (780) Turtleneck Knitwear Vira</td><td class="num">RM 2,264</td><td class="num">70</td></tr>
+<tr><td class="pn">QFM Rinie Stripe Turtleneck Top S size petite size (155</td><td class="num">RM 1,105</td><td class="num">60</td></tr>
+<tr><td class="pn">QFM Feera Stripe Kemeja Labuh (#1416) Striped Cotton Li</td><td class="num">RM 974</td><td class="num">36</td></tr>
+<tr><td class="pn">QFM Faye Plain Tunic (#31025) Kemeja Labuh Muslimah Baj</td><td class="num">RM 871</td><td class="num">32</td></tr>
+<tr><td class="pn">QFM Skirt HAZEL Pleated Chiffon (#260)</td><td class="num">RM 733</td><td class="num">22</td></tr>
+<tr><td class="pn">QFM Eva Dolly Pleated Skirt (238) Kain Labuh Chiffon Mu</td><td class="num">RM 684</td><td class="num">20</td></tr>
+<tr><td class="pn">QFM Mellia Top (1551) V Neck Shirt Viral</td><td class="num">RM 399</td><td class="num">21</td></tr>
+<tr><td class="pn">QFM Helena Skirt Labuh Kembang A-Line (218) Poly Cotton</td><td class="num">RM 377</td><td class="num">11</td></tr>
+<tr><td class="pn">QFM Riena Knitwear (3088) Muslimah Labuh Longgar Stretc</td><td class="num">RM 355</td><td class="num">12</td></tr>
+<tr><td class="pn">QFM Serra Top (1555) Zipped Neck Shirt Viral knitwear b</td><td class="num">RM 348</td><td class="num">18</td></tr>
+<tr><td class="pn">QFM Reene Corduroy Jacket Croptop 9896 Outerwear Cardig</td><td class="num">RM 344</td><td class="num">13</td></tr>
+<tr><td class="pn">QFM Marissa Flare Skirt Denim Cotton (99117-2) Jeans Sk</td><td class="num">RM 323</td><td class="num">12</td></tr>
 </tbody>
-  </table></div>
+</table></div></div>
+
+<!-- Shopee Top Products -->
+<div class="sec"><h2>🏪 Shopee — Top Products (90 days)</h2><div class="dv"></div></div>
+<div class="card"><div class="tbl-w"><table>
+  <thead><tr><th>Product</th><th class="num">Revenue</th><th class="num">Orders</th></tr></thead>
+  <tbody><tr><td class="pn">QFM Melody Batwing Knitwear Top (#3299)</td><td class="num">RM 9,975</td><td class="num">229</td></tr>
+<tr><td class="pn">QFM Rosee Batwing Button Knitwear Top (#3289)</td><td class="num">RM 4,445</td><td class="num">99</td></tr>
+<tr><td class="pn">QFM Elnaura Knitted Striped Top (A606)</td><td class="num">RM 2,460</td><td class="num">93</td></tr>
+<tr><td class="pn">QFM Ana Batwing Knitwear Viral (1532) Oversize Knitwear</td><td class="num">RM 1,636</td><td class="num">37</td></tr>
+<tr><td class="pn">QFM Aprilia Kemeja Top (1318) Casual Striped Blouse</td><td class="num">RM 807</td><td class="num">26</td></tr>
+<tr><td class="pn">QFM Jelita Skirt Labuh (#206) Wanita Maxi Renda</td><td class="num">RM 649</td><td class="num">12</td></tr>
+<tr><td class="pn">QFM Skirt HAZEL Pleated Chiffon (#260)</td><td class="num">RM 638</td><td class="num">16</td></tr>
+<tr><td class="pn">QFM Cherry Baby Doll (#5328)</td><td class="num">RM 449</td><td class="num">9</td></tr>
+<tr><td class="pn">QFM Adra Crop Top Pocket (#1446)</td><td class="num">RM 419</td><td class="num">14</td></tr>
+<tr><td class="pn">QFM Azita Knitted Cardigan (1379-2) Knitwear Cardigan V</td><td class="num">RM 359</td><td class="num">10</td></tr>
+<tr><td class="pn">QFM Eva Dolly Pleated Skirt (238) Kain Labuh Chiffon Mu</td><td class="num">RM 349</td><td class="num">7</td></tr>
+<tr><td class="pn">QFM Jasmin Cotton Stripes Knitwear (2903) Stripes Knitw</td><td class="num">RM 200</td><td class="num">5</td></tr>
+<tr><td class="pn">QFM Kiara Sulam Knitwear (1598) Embroidery Knitwear Vir</td><td class="num">RM 160</td><td class="num">4</td></tr>
+<tr><td class="pn">QFM Faye Plain Tunic (#31025)</td><td class="num">RM 156</td><td class="num">4</td></tr>
+<tr><td class="pn">QFM ZAZA Cotton Embroidery Top (723)</td><td class="num">RM 120</td><td class="num">3</td></tr>
+<tr><td class="pn">QFM Mellia Top (1551) V Neck Shirt Viral</td><td class="num">RM 119</td><td class="num">6</td></tr>
+<tr><td class="pn">QFM Akira Ribbed Knit Cardigan (A399)</td><td class="num">RM 100</td><td class="num">2</td></tr>
+<tr><td class="pn">QFM Helena Skirt Labuh Kembang A-Line (218) Poly Cotton</td><td class="num">RM 100</td><td class="num">2</td></tr>
+<tr><td class="pn">QFM Jelita (#206) Skirt Labuh Wanita Maxi Renda</td><td class="num">RM 100</td><td class="num">2</td></tr>
+<tr><td class="pn">QFM Zahra Marissa Denim Duo Set (#3876-99117-2)</td><td class="num">RM 80</td><td class="num">1</td></tr>
+</tbody>
+</table></div></div>
+
+<!-- Combined Top Products -->
+<div class="sec"><h2>📊 Combined — Both Platforms</h2><div class="dv"></div></div>
+<div class="card"><div class="tbl-w"><table>
+  <thead><tr><th>Product</th><th class="num">Total</th><th class="num">Shopee</th><th class="num">TikTok</th></tr></thead>
+  <tbody><tr><td class="pn">QFM Melody Batwing Knitwear Top (#3299)</td><td class="num">RM 31,261</td><td class="num">RM 9,975</td><td class="num">RM 21,286</td></tr>
+<tr><td class="pn">QFM Azita Knitted Cardigan (1379-2) Knitwear Cardi</td><td class="num">RM 20,802</td><td class="num">RM 359</td><td class="num">RM 20,443</td></tr>
+<tr><td class="pn">QFM Elnaura Knitted Striped Top A606</td><td class="num">RM 13,025</td><td class="num">RM 0</td><td class="num">RM 13,025</td></tr>
+<tr><td class="pn">QFM Elnaura Knitted Striped Top (A606)</td><td class="num">RM 12,299</td><td class="num">RM 2,460</td><td class="num">RM 9,838</td></tr>
+<tr><td class="pn">QFM Rosee Batwing Button Knitwear Top (#3289)</td><td class="num">RM 10,499</td><td class="num">RM 4,445</td><td class="num">RM 6,053</td></tr>
+<tr><td class="pn">QFM Ana Batwing Knitwear Viral (1532) Oversize Kni</td><td class="num">RM 6,869</td><td class="num">RM 1,636</td><td class="num">RM 5,233</td></tr>
+<tr><td class="pn">QFM Aprilia Kemeja Top (#1318) Casual Striped Blou</td><td class="num">RM 4,194</td><td class="num">RM 0</td><td class="num">RM 4,194</td></tr>
+<tr><td class="pn">QFM Adra Croptop Ribbon (#1446) Pocket croptop kem</td><td class="num">RM 2,818</td><td class="num">RM 0</td><td class="num">RM 2,818</td></tr>
+<tr><td class="pn">QFM Zeena Manik Knitwear (780) Turtleneck Knitwear</td><td class="num">RM 2,264</td><td class="num">RM 0</td><td class="num">RM 2,264</td></tr>
+<tr><td class="pn">QFM Skirt HAZEL Pleated Chiffon (#260)</td><td class="num">RM 1,371</td><td class="num">RM 638</td><td class="num">RM 733</td></tr>
+<tr><td class="pn">QFM Rinie Stripe Turtleneck Top S size petite size</td><td class="num">RM 1,105</td><td class="num">RM 0</td><td class="num">RM 1,105</td></tr>
+<tr><td class="pn">QFM Eva Dolly Pleated Skirt (238) Kain Labuh Chiff</td><td class="num">RM 1,033</td><td class="num">RM 349</td><td class="num">RM 684</td></tr>
+<tr><td class="pn">QFM Feera Stripe Kemeja Labuh (#1416) Striped Cott</td><td class="num">RM 974</td><td class="num">RM 0</td><td class="num">RM 974</td></tr>
+<tr><td class="pn">QFM Faye Plain Tunic (#31025) Kemeja Labuh Muslima</td><td class="num">RM 871</td><td class="num">RM 0</td><td class="num">RM 871</td></tr>
+<tr><td class="pn">QFM Aprilia Kemeja Top (1318) Casual Striped Blous</td><td class="num">RM 807</td><td class="num">RM 807</td><td class="num">RM 0</td></tr>
+<tr><td class="pn">QFM Cherry Baby Doll (#5328)</td><td class="num">RM 677</td><td class="num">RM 449</td><td class="num">RM 228</td></tr>
+<tr><td class="pn">QFM Jelita Skirt Labuh (#206) Wanita Maxi Renda</td><td class="num">RM 649</td><td class="num">RM 649</td><td class="num">RM 0</td></tr>
+<tr><td class="pn">QFM Mellia Top (1551) V Neck Shirt Viral</td><td class="num">RM 519</td><td class="num">RM 119</td><td class="num">RM 399</td></tr>
+<tr><td class="pn">QFM Helena Skirt Labuh Kembang A-Line (218) Poly C</td><td class="num">RM 477</td><td class="num">RM 100</td><td class="num">RM 377</td></tr>
+<tr><td class="pn">QFM Kiara Sulam Knitwear (1598) Embroidery Knitwea</td><td class="num">RM 454</td><td class="num">RM 160</td><td class="num">RM 294</td></tr>
+</tbody>
+</table></div></div>
+
+<!-- Footer -->
+<div class="card foot" style="border-left:3px solid var(--b);margin-top:16px">
+  <strong style="color:var(--t)">Data Sources:</strong> TikTok Order API + Finance API · Shopee Order Detail + Escrow API<br>
+  <strong style="color:var(--t)">Refresh:</strong> Daily 8AM MYT · Last update: 2026-05-08 20:31 GMT+8<br>
+  <strong style="color:var(--t)">Revenue:</strong> Gross GMV (completed orders only). Returns/refunds deducted where API available.
 </div>
 
-<div class="card foot" style="margin-top:20px;border-left:3px solid var(--am)">
-  <strong style="color:var(--txt)">Pipeline:</strong> Daily refresh at 8AM MYT · TikTok API + Shopee Partner API<br>
-  <strong style="color:var(--txt)">Data:</strong> 2,000 recent orders · 600 finance statements · 854 products · 218 Shopee escrows<br>
-  <strong style="color:var(--txt)">Last run:</strong> 2026-05-08 11:41 GMT+8
 </div>
-
-</div>
-<script>
-(function(){var e=document.getElementById('ts');function u(){e.textContent='Updated: '+new Date().toLocaleString('en-GB',{timeZone:'Asia/Kuala_Lumpur',hour12:false})}u();setInterval(u,30000)})();
-</script>
+<script>(function(){var e=document.getElementById('ts');function u(){e.textContent='Updated: '+new Date().toLocaleString('en-GB',{timeZone:'Asia/Kuala_Lumpur',hour12:false})}u();setInterval(u,30000)})();</script>
 </body></html>
