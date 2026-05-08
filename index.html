@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>QFM CEO Dashboard · Queen Fashion Malaysia</title>
 <style>
 :root{--bg:#0b0e14;--card:#111827;--border:#1f2937;--text:#f3f4f6;--muted:#9ca3af}
@@ -51,7 +54,7 @@ tr:hover td{background:rgba(255,255,255,.015)}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
 .alert-banner{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:8px;padding:10px 14px;margin-bottom:16px}
 .alert-banner.green{background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2)}
-.dash_off_critical {stroke-dashoffset: 187.0}
+.dash_off_at risk {stroke-dashoffset: 174.9}
 @media(max-width:960px){.grid-2{grid-template-columns:1fr}.kpi-grid,.kpi-grid-3{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){
 .container{padding:10px}
@@ -71,7 +74,7 @@ th,td{padding:6px 8px;font-size:11px}
   <h1><span class="logo">👑</span>Queen Fashion Malaysia</h1>
   <span class="subtitle">CEO Dashboard · MY Timezone</span>
   <span class="badge">LIVE</span>
-  <div class="timestamp" id="headerTime">Updated: 2026-05-08 10:26</div>
+  <div class="timestamp" id="headerTime">Updated: 2026-05-08 10:29</div>
 </div>
 
 <div class="container">
@@ -91,11 +94,11 @@ th,td{padding:6px 8px;font-size:11px}
     <div class="kpi-sub">650 deactivated · 97 deleted</div>
     <div class="icon">📦</div>
   </div>
-  <div class="kpi-card" style="border-left:3px solid #ef4444">
+  <div class="kpi-card" style="border-left:3px solid #f59e0b">
     <div class="kpi-label">Business Health</div>
-    <div class="kpi-value" style="color:#ef4444">38/100</div>
-    <div class="kpi-change" style="color:#ef4444">CRITICAL</div>
-    <div class="kpi-sub">Revenue: 0/25 · Inventory: 13/25 · Cancel: -10/5</div>
+    <div class="kpi-value" style="color:#f59e0b">42/100</div>
+    <div class="kpi-change" style="color:#f59e0b">AT RISK</div>
+    <div class="kpi-sub">Revenue: 0/25 · Inventory: 13/25 · Cancel: -6/5</div>
     <div class="icon">📊</div>
   </div>
   <div class="kpi-card" style="border-left:3px solid #3b82f6">
@@ -118,9 +121,9 @@ th,td{padding:6px 8px;font-size:11px}
 <div class="kpi-card" style="border-left:3px solid ef4444;margin-bottom:16px">
   <div class="kpi-label">Cancel Rate (all products)</div>
   <div style="display:flex;gap:16px;align-items:center">
-    <div style="font-size:28px;font-weight:800;color:#ef4444">100.0%</div>
+    <div style="font-size:28px;font-weight:800;color:#ef4444">47.1%</div>
     <div style="flex:1">
-      <div class="progress-track"><div class="progress-fill" style="background:#ef4444;width:100.0%"></div></div>
+      <div class="progress-track"><div class="progress-fill" style="background:#ef4444;width:47.098976109215016%"></div></div>
       <div style="font-size:11px;color:var(--muted)">Target: &lt;15% · Industry avg: 10-15% for fashion</div>
     </div>
   </div>
@@ -128,10 +131,10 @@ th,td{padding:6px 8px;font-size:11px}
 
 <!-- TODAY'S ACTIONS -->
 <div class="section-header"><h2>🎯 What To Do TODAY</h2><div class="divider"></div></div>
-<div class="chart-card" style="border-left:3px solid #ef4444">
-  <div style="color:#f3f4f6;font-size:13px;padding:6px 0;border-bottom:1px solid var(--border)">🔥 REACTIVATE: "QFM Jojo Top (135#) Casual" — RM 2,721 revenue sitting idle</div>
+<div class="chart-card" style="border-left:3px solid #f59e0b">
+  <div style="color:#f3f4f6;font-size:13px;padding:6px 0;border-bottom:1px solid var(--border)">🔥 REACTIVATE: "QFM Candies Top (2225#) Casual" — RM 8,868 revenue sitting idle</div>
 <div style="color:#f3f4f6;font-size:13px;padding:6px 0;border-bottom:1px solid var(--border)">📦 Only 107 active products. Reactivate top 10 from the list below.</div>
-<div style="color:#f3f4f6;font-size:13px;padding:6px 0;border-bottom:1px solid var(--border)">⚠️ Cancel rate is 100%. Check COD settings and customer verification.</div>
+<div style="color:#f3f4f6;font-size:13px;padding:6px 0;border-bottom:1px solid var(--border)">⚠️ Cancel rate is 47%. Check COD settings and customer verification.</div>
 <div style="color:#f3f4f6;font-size:13px;padding:6px 0;border-bottom:1px solid var(--border)">📉 Daily avg RM 667 — below survival threshold. Need immediate action.</div>
 
 </div>
@@ -143,16 +146,16 @@ th,td{padding:6px 8px;font-size:11px}
     <table>
       <thead><tr><th>Product</th><th style="text-align:right">Revenue (30d)</th><th style="text-align:right">Orders</th><th style="text-align:right">Cancel Rate</th><th style="text-align:right">Action</th></tr></thead>
       <tbody>
-        <tr><td class="product-name">QFM Jojo Top (135#) Casual</td><td style="text-align:right">RM 2,721</td><td style="text-align:right">136</td><td style="text-align:right">100%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
-<tr><td class="product-name">QFM Candies Top (2225#) Casual</td><td style="text-align:right">RM 2,192</td><td style="text-align:right">120</td><td style="text-align:right">100%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
-<tr><td class="product-name">QFM Damia Top (#1214) Casual Plain</td><td style="text-align:right">RM 1,088</td><td style="text-align:right">56</td><td style="text-align:right">100%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
+        <tr><td class="product-name">QFM Candies Top (2225#) Casual</td><td style="text-align:right">RM 8,868</td><td style="text-align:right">464</td><td style="text-align:right">26%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
+<tr><td class="product-name">QFM Damia Top (#1214) Casual Plain</td><td style="text-align:right">RM 3,303</td><td style="text-align:right">168</td><td style="text-align:right">33%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
+<tr><td class="product-name">QFM Jojo Top (135#) Casual</td><td style="text-align:right">RM 2,721</td><td style="text-align:right">136</td><td style="text-align:right">100%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
+<tr><td class="product-name">QFM Tana Top (1113#) Casual</td><td style="text-align:right">RM 2,372</td><td style="text-align:right">120</td><td style="text-align:right">13%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
+<tr><td class="product-name">QFM Leopard Skirt  (0647#) Pleated</td><td style="text-align:right">RM 1,540</td><td style="text-align:right">80</td><td style="text-align:right">20%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
+<tr><td class="product-name">QFM Jaclyn Top (1199#) Casual</td><td style="text-align:right">RM 1,529</td><td style="text-align:right">64</td><td style="text-align:right">50%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
+<tr><td class="product-name">QFM Kamelia Pants (132#) Casual Cotton</td><td style="text-align:right">RM 1,480</td><td style="text-align:right">80</td><td style="text-align:right">10%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
+<tr><td class="product-name">QFM Kaison Skirt (12#) Casual Floral</td><td style="text-align:right">RM 1,228</td><td style="text-align:right">72</td><td style="text-align:right">0%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
 <tr><td class="product-name">QFM Aamina Pleated Skirt (0648#)</td><td style="text-align:right">RM 809</td><td style="text-align:right">40</td><td style="text-align:right">100%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
-<tr><td class="product-name">QFM Jaclyn Top (1199#) Casual</td><td style="text-align:right">RM 759</td><td style="text-align:right">32</td><td style="text-align:right">100%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
 <tr><td class="product-name">QFM Deeja Skirt Dolly (825-5#) Casual</td><td style="text-align:right">RM 468</td><td style="text-align:right">24</td><td style="text-align:right">100%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
-<tr><td class="product-name">QFM Leopard Skirt  (0647#) Pleated</td><td style="text-align:right">RM 344</td><td style="text-align:right">16</td><td style="text-align:right">100%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
-<tr><td class="product-name">QFM Tana Top (1113#) Casual</td><td style="text-align:right">RM 320</td><td style="text-align:right">16</td><td style="text-align:right">100%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
-<tr><td class="product-name">QFM Shamila Jeans Palazzo (656#)</td><td style="text-align:right">RM 287</td><td style="text-align:right">8</td><td style="text-align:right">100%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
-<tr><td class="product-name">QFM Kamelia Pants (132#) Casual Cotton</td><td style="text-align:right">RM 160</td><td style="text-align:right">8</td><td style="text-align:right">100%</td><td style="text-align:right"><span class="tag tag-inactive">REACTIVATE</span></td></tr>
 
       </tbody>
     </table>
@@ -192,10 +195,10 @@ th,td{padding:6px 8px;font-size:11px}
 <!-- Data freshness -->
 <div class="chart-card" style="font-size:12px;color:var(--muted);border-left:3px solid #3b82f6">
   <strong style="color:var(--text)">Data Sources:</strong><br>
-  TikTok: 800 recent orders · 600 finance statements · 854 products<br>
+  TikTok: 1600 recent orders · 600 finance statements · 854 products<br>
   Shopee: 219 escrow records · 30-day window<br>
-  Pipeline: Runs daily at 8AM MYT · Last update: 2026-05-08 10:26<br>
-  <span style="color:#ef4444">Health Score: 38/100 — CRITICAL</span>
+  Pipeline: Runs daily at 8AM MYT · Last update: 2026-05-08 10:29<br>
+  <span style="color:#10b981">Health Score: 42/100 — AT RISK</span>
 </div>
 
 </div>
