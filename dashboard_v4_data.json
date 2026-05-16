@@ -1,0 +1,97 @@
+{
+  "collected_at": "2026-05-16T22:30:00+08:00",
+  "period": "Past 30 Days (Apr 16 - May 15, 2026)",
+  "shopee": {
+    "sales": 14110.19,
+    "sales_previous": 5671.48,
+    "sales_growth": 148.05,
+    "sales_rebate": 11994.97,
+    "orders": 283,
+    "visitors": 25595,
+    "product_clicks": 33979,
+    "conversion_rate": 0.83,
+    "aov": 49.86,
+    "cancelled_sales": 494.60,
+    "refunded_sales": 196.50,
+    "top_products": [
+      {"name": "QFM Melody Batwing Knitwear Top", "id": 27392256425, "sales": 6468.65, "impressions": 110000, "clicks": 9397, "ctr": 8.53},
+      {"name": "QFM Rosee Batwing Button Knitwear Top", "id": 57901330249, "sales": 3551.34, "impressions": 87906, "clicks": 5476, "ctr": 6.23},
+      {"name": "QFM Elnaura Knitted Striped Top", "id": 27209230021, "sales": 1062.28, "impressions": 60797, "clicks": 3486, "ctr": 5.73},
+      {"name": "QFM Ana Batwing Knitwear Viral", "id": 25388380132, "sales": 653.84, "impressions": 25819, "clicks": 1580, "ctr": 6.12},
+      {"name": "QFM Jelita Skirt Labuh", "id": 52404153363, "sales": 600.90, "impressions": 12562, "clicks": 0, "ctr": 5.32}
+    ],
+    "sales_contribution": {
+      "product_card": {"amount": 7616.73, "pct": 54, "growth": 184.20},
+      "shopee_live": {"amount": 0, "pct": 0, "growth": 0},
+      "seller_video": {"amount": 372.34, "pct": 3, "growth": 21.23},
+      "shopee_affiliate": {"amount": 6121.12, "pct": 43, "growth": 149.65},
+      "shopee_ads": {"amount": 10671.33, "pct": 76, "growth": 161.27}
+    },
+    "traffic_sources": {
+      "product_card": {"sales": 7616.73, "impressions": 516000, "clicks": 27980, "pct": 100},
+      "search": {"sales": 2146.59, "impressions": 234000, "clicks": 10744, "pct": 28.18},
+      "recommendation": {"sales": 2105.55, "impressions": 181000, "clicks": 11091, "pct": 27.64},
+      "shopping_cart": {"sales": 927.69, "impressions": 26230, "clicks": 1471, "pct": 12.18},
+      "my_purchase": {"sales": 856.86, "pct": 11.25},
+      "shop": {"sales": 526.88, "impressions": 59780, "clicks": 3076, "pct": 6.92}
+    },
+    "shop_name": "QFM Modest Clothing Fashion Concept",
+    "shop_region": "MY",
+    "shop_status": "NORMAL"
+  },
+  "tiktok": {
+    "gmv_7d": 2667.41,
+    "gmv_growth": 30.08,
+    "orders_7d": 77,
+    "orders_growth": 30.63,
+    "customers_7d": 75,
+    "customers_growth": 29.91,
+    "visitors_7d": 7585,
+    "visitors_growth": 25.6,
+    "conversion_rate": 1.02,
+    "shop_ranking": 25,
+    "gmv_breakdown": {
+      "videos": 58.6,
+      "product_cards": 37.3,
+      "live": 4.1
+    },
+    "ace_scores": {
+      "assortment": {"score": 2.5, "percentile": 5},
+      "content": {"score": 1.8, "percentile": 5},
+      "empowerment": {"score": 2.0, "percentile": 5}
+    },
+    "product_stock": {
+      "total": 120,
+      "in_stock": 36,
+      "low_stock": 24,
+      "out_of_stock": 60,
+      "oos_pct": 50
+    }
+  },
+  "tokens": {
+    "shopee": {"status": "active", "expires": "2026-05-17T02:22:00+08:00", "auto_refresh": true},
+    "tiktok": {"status": "expired", "expires": "2026-05-15T23:01:00+08:00", "needs_reauth": true},
+    "shopee_v2_app": {"status": "Online", "partner_id": 2033354, "sensitive_data": "No access"},
+    "shopee_v3_app": {"status": "Online", "partner_id": 2033424, "sensitive_data": "Unknown"},
+    "tiktok_app": {"status": "99% API success", "app_key": "6jksfv9snensv", "authorized": true}
+  },
+  "platform_apps": {
+    "shopee": [
+      {"name": "QFM Dashboard V3", "status": "Online", "partner_id": 2033424, "key_expires": "2026-10-20"},
+      {"name": "QFM Analytics Dashboard v2", "status": "Online", "partner_id": 2033354, "key_expires": "2026-10-19"},
+      {"name": "QFM Analytics Dashboard", "status": "Developing", "partner_id": 1232225, "key_expires": null}
+    ],
+    "tiktok": [
+      {"name": "Hermes Tiktok API", "app_key": "6jksfv9snensv", "success_rate": "99%", "authorized_seller": "Queen Fashion Malaysia"},
+      {"name": "Zenith QFM", "app_key": "6jj4eufi55s3g", "authorized_since": "2026-04-04"},
+      {"name": "Profitlens", "app_key": "6jj4eufh3bs66"}
+    ]
+  },
+  "alerts": [
+    {"severity": "critical", "title": "50% TikTok Products Out of Stock", "desc": "60 of 120 products are OOS. Revenue leakage: estimated RM 2,000+/week.", "action": "Restock top-selling items immediately"},
+    {"severity": "warning", "title": "TikTok API Token Expired", "desc": "Access token expired May 15. Automated data pipeline disabled.", "action": "Re-authorize via partner.tiktokshop.com"},
+    {"severity": "warning", "title": "Shopee Sensitive Data Blocked", "desc": "V2 app has 'No access' to Sensitive Data. Income/payout APIs return errors.", "action": "Check V3 app permissions or request Sensitive Data access"},
+    {"severity": "warning", "title": "Shopee Ads = 76% of Sales", "desc": "RM 10,671 (76%) of RM 14,110 in sales comes from ads. High dependency risk.", "action": "Monitor ROAS closely; diversify traffic sources"},
+    {"severity": "info", "title": "ACE Scores Bottom 5%", "desc": "TikTok shop scores in bottom 5% for Assortment, Content, and Empowerment.", "action": "Focus on flash sales (up to 6% GMV uplift opportunity)"}
+  ]
+}
