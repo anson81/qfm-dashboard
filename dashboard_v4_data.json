@@ -11,33 +11,124 @@
     "product_clicks": 33979,
     "conversion_rate": 0.83,
     "aov": 49.86,
-    "cancelled_sales": 494.60,
-    "refunded_sales": 196.50,
+    "cancelled_sales": 494.6,
+    "refunded_sales": 196.5,
     "top_products": [
-      {"name": "QFM Melody Batwing Knitwear Top", "id": 27392256425, "sales": 6468.65, "impressions": 110000, "clicks": 9397, "ctr": 8.53},
-      {"name": "QFM Rosee Batwing Button Knitwear Top", "id": 57901330249, "sales": 3551.34, "impressions": 87906, "clicks": 5476, "ctr": 6.23},
-      {"name": "QFM Elnaura Knitted Striped Top", "id": 27209230021, "sales": 1062.28, "impressions": 60797, "clicks": 3486, "ctr": 5.73},
-      {"name": "QFM Ana Batwing Knitwear Viral", "id": 25388380132, "sales": 653.84, "impressions": 25819, "clicks": 1580, "ctr": 6.12},
-      {"name": "QFM Jelita Skirt Labuh", "id": 52404153363, "sales": 600.90, "impressions": 12562, "clicks": 0, "ctr": 5.32}
+      {
+        "name": "QFM Melody Batwing Knitwear Top",
+        "id": 27392256425,
+        "sales": 6468.65,
+        "impressions": 110000,
+        "clicks": 9397,
+        "ctr": 8.53
+      },
+      {
+        "name": "QFM Rosee Batwing Button Knitwear Top",
+        "id": 57901330249,
+        "sales": 3551.34,
+        "impressions": 87906,
+        "clicks": 5476,
+        "ctr": 6.23
+      },
+      {
+        "name": "QFM Elnaura Knitted Striped Top",
+        "id": 27209230021,
+        "sales": 1062.28,
+        "impressions": 60797,
+        "clicks": 3486,
+        "ctr": 5.73
+      },
+      {
+        "name": "QFM Ana Batwing Knitwear Viral",
+        "id": 25388380132,
+        "sales": 653.84,
+        "impressions": 25819,
+        "clicks": 1580,
+        "ctr": 6.12
+      },
+      {
+        "name": "QFM Jelita Skirt Labuh",
+        "id": 52404153363,
+        "sales": 600.9,
+        "impressions": 12562,
+        "clicks": 0,
+        "ctr": 5.32
+      }
     ],
     "sales_contribution": {
-      "product_card": {"amount": 7616.73, "pct": 54, "growth": 184.20},
-      "shopee_live": {"amount": 0, "pct": 0, "growth": 0},
-      "seller_video": {"amount": 372.34, "pct": 3, "growth": 21.23},
-      "shopee_affiliate": {"amount": 6121.12, "pct": 43, "growth": 149.65},
-      "shopee_ads": {"amount": 10671.33, "pct": 76, "growth": 161.27}
+      "product_card": {
+        "amount": 7616.73,
+        "pct": 54,
+        "growth": 184.2
+      },
+      "shopee_live": {
+        "amount": 0,
+        "pct": 0,
+        "growth": 0
+      },
+      "seller_video": {
+        "amount": 372.34,
+        "pct": 3,
+        "growth": 21.23
+      },
+      "shopee_affiliate": {
+        "amount": 6121.12,
+        "pct": 43,
+        "growth": 149.65
+      },
+      "shopee_ads": {
+        "amount": 10671.33,
+        "pct": 76,
+        "growth": 161.27
+      }
     },
     "traffic_sources": {
-      "product_card": {"sales": 7616.73, "impressions": 516000, "clicks": 27980, "pct": 100},
-      "search": {"sales": 2146.59, "impressions": 234000, "clicks": 10744, "pct": 28.18},
-      "recommendation": {"sales": 2105.55, "impressions": 181000, "clicks": 11091, "pct": 27.64},
-      "shopping_cart": {"sales": 927.69, "impressions": 26230, "clicks": 1471, "pct": 12.18},
-      "my_purchase": {"sales": 856.86, "pct": 11.25},
-      "shop": {"sales": 526.88, "impressions": 59780, "clicks": 3076, "pct": 6.92}
+      "product_card": {
+        "sales": 7616.73,
+        "impressions": 516000,
+        "clicks": 27980,
+        "pct": 100
+      },
+      "search": {
+        "sales": 2146.59,
+        "impressions": 234000,
+        "clicks": 10744,
+        "pct": 28.18
+      },
+      "recommendation": {
+        "sales": 2105.55,
+        "impressions": 181000,
+        "clicks": 11091,
+        "pct": 27.64
+      },
+      "shopping_cart": {
+        "sales": 927.69,
+        "impressions": 26230,
+        "clicks": 1471,
+        "pct": 12.18
+      },
+      "my_purchase": {
+        "sales": 856.86,
+        "pct": 11.25
+      },
+      "shop": {
+        "sales": 526.88,
+        "impressions": 59780,
+        "clicks": 3076,
+        "pct": 6.92
+      }
     },
     "shop_name": "QFM Modest Clothing Fashion Concept",
     "shop_region": "MY",
-    "shop_status": "NORMAL"
+    "shop_status": "NORMAL",
+    "ads": {
+      "total_ads_sales": 10671.33,
+      "ads_pct_of_total": 76,
+      "gained_voucher_amount": 24.0,
+      "gained_voucher_gmv": 184.0,
+      "gmv_max_roas_protection": true,
+      "gmv_max_recommendation": "Shopee recommends GMV Max Custom ROAS Product Ads with ROAS Protection Service"
+    }
   },
   "tiktok": {
     "gmv_7d": 2667.41,
@@ -56,9 +147,18 @@
       "live": 4.1
     },
     "ace_scores": {
-      "assortment": {"score": 2.5, "percentile": 5},
-      "content": {"score": 1.8, "percentile": 5},
-      "empowerment": {"score": 2.0, "percentile": 5}
+      "assortment": {
+        "score": 2.5,
+        "percentile": 5
+      },
+      "content": {
+        "score": 1.8,
+        "percentile": 5
+      },
+      "empowerment": {
+        "score": 2.0,
+        "percentile": 5
+      }
     },
     "product_stock": {
       "total": 120,
@@ -66,32 +166,161 @@
       "low_stock": 24,
       "out_of_stock": 60,
       "oos_pct": 50
+    },
+    "ads": {
+      "gmv_max_available": true,
+      "gmv_max_seller_uplift": "80% of sellers increase GMV by 20%",
+      "gmv_max_potential_uplift": "3%",
+      "growth_opportunities": [
+        {
+          "rank": 1,
+          "name": "GMV Max Ads",
+          "potential_uplift": "3%",
+          "note": "80% of sellers see 20% GMV increase"
+        },
+        {
+          "rank": 2,
+          "name": "Flash Sale Channel",
+          "potential_uplift": "6%",
+          "note": "Limited-time deals for excess inventory"
+        },
+        {
+          "rank": 3,
+          "name": "Video Advertising",
+          "potential_uplift": "3%",
+          "note": "Shop Ads for video traffic"
+        },
+        {
+          "rank": 4,
+          "name": "Campaign Registration",
+          "potential_uplift": "3%",
+          "note": "Marketing campaigns for peak sales"
+        },
+        {
+          "rank": 5,
+          "name": "Create Promotions",
+          "potential_uplift": "3%",
+          "note": "Promotional tools for growth"
+        }
+      ],
+      "ace_scores": {
+        "assortment": {
+          "score": 2.5,
+          "percentile": 5
+        },
+        "content": {
+          "score": 1.8,
+          "percentile": 5
+        },
+        "empowerment": {
+          "score": 2.0,
+          "percentile": 5
+        }
+      }
     }
   },
   "tokens": {
-    "shopee": {"status": "active", "expires": "2026-05-17T02:22:00+08:00", "auto_refresh": true},
-    "tiktok": {"status": "expired", "expires": "2026-05-15T23:01:00+08:00", "needs_reauth": true},
-    "shopee_v2_app": {"status": "Online", "partner_id": 2033354, "sensitive_data": "No access"},
-    "shopee_v3_app": {"status": "Online", "partner_id": 2033424, "sensitive_data": "Unknown"},
-    "tiktok_app": {"status": "99% API success", "app_key": "6jksfv9snensv", "authorized": true}
+    "shopee": {
+      "status": "active",
+      "expires": "2026-05-17T02:22:00+08:00",
+      "auto_refresh": true
+    },
+    "tiktok": {
+      "status": "expired",
+      "expires": "2026-05-15T23:01:00+08:00",
+      "needs_reauth": true
+    },
+    "shopee_v2_app": {
+      "status": "Online",
+      "partner_id": 2033354,
+      "sensitive_data": "No access"
+    },
+    "shopee_v3_app": {
+      "status": "Online",
+      "partner_id": 2033424,
+      "sensitive_data": "Unknown"
+    },
+    "tiktok_app": {
+      "status": "99% API success",
+      "app_key": "6jksfv9snensv",
+      "authorized": true
+    }
   },
   "platform_apps": {
     "shopee": [
-      {"name": "QFM Dashboard V3", "status": "Online", "partner_id": 2033424, "key_expires": "2026-10-20"},
-      {"name": "QFM Analytics Dashboard v2", "status": "Online", "partner_id": 2033354, "key_expires": "2026-10-19"},
-      {"name": "QFM Analytics Dashboard", "status": "Developing", "partner_id": 1232225, "key_expires": null}
+      {
+        "name": "QFM Dashboard V3",
+        "status": "Online",
+        "partner_id": 2033424,
+        "key_expires": "2026-10-20"
+      },
+      {
+        "name": "QFM Analytics Dashboard v2",
+        "status": "Online",
+        "partner_id": 2033354,
+        "key_expires": "2026-10-19"
+      },
+      {
+        "name": "QFM Analytics Dashboard",
+        "status": "Developing",
+        "partner_id": 1232225,
+        "key_expires": null
+      }
     ],
     "tiktok": [
-      {"name": "Hermes Tiktok API", "app_key": "6jksfv9snensv", "success_rate": "99%", "authorized_seller": "Queen Fashion Malaysia"},
-      {"name": "Zenith QFM", "app_key": "6jj4eufi55s3g", "authorized_since": "2026-04-04"},
-      {"name": "Profitlens", "app_key": "6jj4eufh3bs66"}
+      {
+        "name": "Hermes Tiktok API",
+        "app_key": "6jksfv9snensv",
+        "success_rate": "99%",
+        "authorized_seller": "Queen Fashion Malaysia"
+      },
+      {
+        "name": "Zenith QFM",
+        "app_key": "6jj4eufi55s3g",
+        "authorized_since": "2026-04-04"
+      },
+      {
+        "name": "Profitlens",
+        "app_key": "6jj4eufh3bs66"
+      }
     ]
   },
   "alerts": [
-    {"severity": "critical", "title": "50% TikTok Products Out of Stock", "desc": "60 of 120 products are OOS. Revenue leakage: estimated RM 2,000+/week.", "action": "Restock top-selling items immediately"},
-    {"severity": "warning", "title": "TikTok API Token Expired", "desc": "Access token expired May 15. Automated data pipeline disabled.", "action": "Re-authorize via partner.tiktokshop.com"},
-    {"severity": "warning", "title": "Shopee Sensitive Data Blocked", "desc": "V2 app has 'No access' to Sensitive Data. Income/payout APIs return errors.", "action": "Check V3 app permissions or request Sensitive Data access"},
-    {"severity": "warning", "title": "Shopee Ads = 76% of Sales", "desc": "RM 10,671 (76%) of RM 14,110 in sales comes from ads. High dependency risk.", "action": "Monitor ROAS closely; diversify traffic sources"},
-    {"severity": "info", "title": "ACE Scores Bottom 5%", "desc": "TikTok shop scores in bottom 5% for Assortment, Content, and Empowerment.", "action": "Focus on flash sales (up to 6% GMV uplift opportunity)"}
+    {
+      "severity": "critical",
+      "title": "50% TikTok Products Out of Stock",
+      "desc": "60 of 120 products are OOS. Revenue leakage: estimated RM 2,000+/week.",
+      "action": "Restock top-selling items immediately"
+    },
+    {
+      "severity": "warning",
+      "title": "TikTok API Token Expired",
+      "desc": "Access token expired May 15. Automated data pipeline disabled.",
+      "action": "Re-authorize via partner.tiktokshop.com"
+    },
+    {
+      "severity": "warning",
+      "title": "Shopee Sensitive Data Blocked",
+      "desc": "V2 app has 'No access' to Sensitive Data. Income/payout APIs return errors.",
+      "action": "Check V3 app permissions or request Sensitive Data access"
+    },
+    {
+      "severity": "warning",
+      "title": "Shopee Ads = 76% of Sales",
+      "desc": "RM 10,671 (76%) of RM 14,110 in sales comes from ads. High dependency risk.",
+      "action": "Monitor ROAS closely; diversify traffic sources"
+    },
+    {
+      "severity": "info",
+      "title": "ACE Scores Bottom 5%",
+      "desc": "TikTok shop scores in bottom 5% for Assortment, Content, and Empowerment.",
+      "action": "Focus on flash sales (up to 6% GMV uplift opportunity)"
+    },
+    {
+      "severity": "info",
+      "title": "Shopee GMV Max Opportunity",
+      "desc": "Shopee is offering free vouchers and ROAS Protection for GMV Max Custom ROAS Product Ads. You already gained RM 24 in vouchers = RM 184 GMV uplift.",
+      "action": "Enable GMV Max Custom ROAS ads in Shopee Ads Center"
+    }
   ]
 }
